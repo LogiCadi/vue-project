@@ -10,6 +10,7 @@ import './lib/mui/css/icons-extra.css'
 
 // 导入MUI js
 import mui from './lib/mui/js/mui.min.js'
+
 Vue.prototype.mui = mui
 
 // 引入app组件
