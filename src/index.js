@@ -28,15 +28,16 @@ import moment from 'moment'
 // mint-ui [基于 Vue.js 的移动端组件库]
 import {
     Lazyload,
-    Loadmore,Spinner
+    Loadmore,
+    Spinner
 } from 'mint-ui';
 
 import 'mint-ui/lib/style.css'
 
 Vue.component(Spinner.name, Spinner);
 Vue.component(Loadmore.name, Loadmore);
-Vue.use(Lazyload,{
-    error: require('./image/default.jpg') 
+Vue.use(Lazyload, {
+    error: require('./image/default.jpg')
 });
 
 
