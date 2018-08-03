@@ -5,7 +5,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter)
 
 // 导入MUI css
-import './lib/mui/css/mui.css'
+import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 
 // 导入MUI js
