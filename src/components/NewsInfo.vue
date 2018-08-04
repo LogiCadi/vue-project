@@ -4,7 +4,7 @@
     <!-- 下拉刷新容器 -->
     <!-- <div id="refreshContainer" class="mui-scroll-wrapper">
       <div class="mui-scroll"> -->
-    <mt-loadmore class="wrapper" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
+    <mt-loadmore class="wrapper mui-content-padded" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
 
       <h3>{{ newsInfo.title }}</h3>
 
@@ -111,7 +111,7 @@ export default {
     width: 100%;
   }
   .wrapper {
-    padding: 5px;
+    padding-bottom: 50px;
   }
   h3 {
     text-align: center;

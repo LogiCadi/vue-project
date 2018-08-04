@@ -1,7 +1,7 @@
 <template>
   <div class="photo-info">
     <div class="mui-content-padded">
-      <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
+      <mt-loadmore class="wrapper" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
         <h3>{{ info.title }}</h3>
 
         <p class="time-click">
@@ -125,37 +125,43 @@ export default {
 
 <style lang="scss" scoped>
 .photo-info {
-  // 头部
-  h3 {
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-  }
-  p.time-click {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: rgb(99, 160, 230);
-  }
-  // 图片部分
-  .info-imgs {
-    &:before,
-    &:after {
-      position: relative;
+  height: 100vh;
+
+  .wrapper {
+   
+    padding-bottom: 50px;
+    // 头部
+    h3 {
+      text-align: center;
+      font-size: 14px;
+      color: #333;
     }
-  
-    background-color: #efeff4;
-    img {
-      width: 100%;
-      // margin: 4px 2vw;
-      box-shadow: 0 0 3px #666;
+    p.time-click {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: rgb(99, 160, 230);
     }
-  }
-  // 正文部分
-  .info-content {
-    font-size: 14px;
-    line-height: 2;
+    // 图片部分
+    .info-imgs {
+      &:before,
+      &:after {
+        position: relative;
+      }
+
+      background-color: #efeff4;
+      img {
+        width: 100%;
+        // margin: 4px 2vw;
+        box-shadow: 0 0 3px #666;
+      }
+    }
+    // 正文部分
+    .info-content {
+      font-size: 14px;
+      line-height: 2;
+    }
   }
 }
 
