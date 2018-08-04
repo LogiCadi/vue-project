@@ -101,9 +101,9 @@ export default {
 }
 
 // MUI的坑
-* {
-  touch-action: none;
-}
+// * {
+//   touch-action: none;
+// }
 
 .v-enter {
   opacity: 0;
