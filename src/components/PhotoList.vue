@@ -1,33 +1,32 @@
 <template>
   <div class="photo-list">
-    <div class="mui-scroll-wrapper">
-      <div class="mui-scroll images">
-        <!-- 图片分类 -->
-        <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-          <div class="mui-scroll">
 
-            <a @tap='getImgs(item.id)' href="javascrpt:;" :class="['mui-control-item', i==0? 'mui-active':'']" v-for="(item,i) in imgCategory" :key="item.id">
-              {{ item.title }}
-            </a>
+    <!-- 图片分类 -->
+    <!-- 横向区域滑动 -->
+    <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+      <div class="mui-scroll">
 
-          </div>
-        </div>
-        <!-- 图片列表详情 -->
-        <div class="mui-card" v-for="item in imgs" :key="item.id">
-          <a href="javascript:;">
-            <img v-lazy.container="item.img_url" alt="" @error="item.img_url=defaultImg">
-            <p class="mui-slider-title">
-              <span>
-                <b>{{ item.title }}</b>
-              </span><br>
-              <span>{{ item.zhaiyao }}</span>
-            </p>
-          </a>
-        </div>
+        <a @tap='getImgs(item.id)' href="javascrpt:;" :class="['mui-control-item', i==0? 'mui-active':'']" v-for="(item,i) in imgCategory" :key="item.id">
+          {{ item.title }}
+        </a>
 
       </div>
     </div>
+    <!-- 图片列表详情 -->
+    <div class="mui-card" v-for="item in imgs" :key="item.id">
+      <router-link :to="'/home/photoInfo/' + item.id">
+        <img v-lazy="item.img_url" alt="">
+        <p class="mui-slider-title">
+          <span>
+            <b>{{ item.title }}</b>
+          </span><br>
+          <span>{{ item.zhaiyao }}</span>
+        </p>
+      </router-link>
+    </div>
+
   </div>
+
 </template>
 <script>
 export default {
@@ -58,6 +57,9 @@ export default {
           this.mui.toast("获取数据失败");
         } else {
           this.imgs = res.body.message;
+          this.imgs.forEach(item => {
+            item.img_url = require('../image/milkyway1.jpg')
+          });
         }
       });
     },
@@ -85,7 +87,13 @@ export default {
   }
   .mui-card {
     box-shadow: 0 0 6px #888;
-    max-height: 270px;
+    max-height: 67vw;
+    background-color: #ccc;
+    text-align: center;
+    img[lazy="loading"] {
+      width: 40px;
+      height: 67vw;
+    }
   }
   .mui-slider-title {
     height: auto;
@@ -109,16 +117,5 @@ export default {
       }
     }
   }
-}
-image[lazy="loading"] {
-  width: 40px;
-  height: 300px;
-  margin: auto;
-}
-
-.mui-scroll.images{
-  // 无论内容是否达到父容器高度
-  // 都可以区域滚动
-  min-height: 101%;
 }
 </style>

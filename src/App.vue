@@ -6,7 +6,7 @@
     </header>
 
     <transition>
-      <router-view @change-title="changeTitle" class="main-container"></router-view>
+      <router-view @change-title="changeTitle" class="mui-content"></router-view>
     </transition>
 
     <nav class="mui-bar mui-bar-tab" v-if="footer">
@@ -37,9 +37,13 @@
 export default {
   data() {
     return {
+      // header中的标题
       title: "首页",
+      // header是否显示
       header: true,
+      // footer是否显示
       footer: true,
+      // 控制footer中的徽章显示
       badge: {
         cart: 1,
         search: 0
@@ -77,24 +81,30 @@ export default {
 };
 </script>
 <style lang="scss">
-html,
-body {
-  height: 100%;
+// 清除浮动
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
 }
+.clearfix:after {
+  clear: both;
+}
+
 .app-container {
-  padding-top: 45px;
-  padding-bottom: 50px;
   overflow-x: hidden;
-  height: 100%;
 }
-.main-container {
+.mui-content {
   width: 100%;
-  position: relative;
+  padding-bottom: 50px;
+  // position: relative;
 }
+
 // MUI的坑
 * {
   touch-action: none;
 }
+
 .v-enter {
   opacity: 0;
   transform: translateX(100%);

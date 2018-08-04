@@ -1,13 +1,13 @@
 import VueRouter from 'vue-router'
 
 // 导入组件
-import homeContainer from './components/HomeContainer.vue'
-import memberContainer from './components/MemberContainer.vue'
-import cartContainer from './components/CartContainer.vue'
-import searchContainer from './components/SearchContainer.vue'
-import newsList from './components/NewsList.vue'
-import newsInfo from './components/NewsInfo.vue'
-import photoList from './components/PhotoList.vue'
+// import homeContainer from './components/HomeContainer.vue'
+// import memberContainer from './components/MemberContainer.vue'
+// import cartContainer from './components/CartContainer.vue'
+// import searchContainer from './components/SearchContainer.vue'
+// import newsList from './components/NewsList.vue'
+// import newsInfo from './components/NewsInfo.vue'
+// import photoList from './components/PhotoList.vue'
 
 const router = new VueRouter({
     routes: [{
@@ -43,6 +43,14 @@ const router = new VueRouter({
         {
             path: '/home/photoList',
             component: resolve => require(['./components/PhotoList.vue'], resolve)
+        },
+        {
+            path: '/home/photoInfo/:id',
+            component: resolve => require(['./components/PhotoInfo.vue'], resolve)
+        },
+        {
+            path: '/home/goodsList',
+            component: resolve => require(['./components/GoodsList.vue'], resolve)
         }
     ],
     linkActiveClass: 'mui-active'

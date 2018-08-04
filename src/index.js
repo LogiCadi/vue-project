@@ -7,9 +7,10 @@ Vue.use(VueRouter)
 // 导入MUI css
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
+import './lib/mui/css/mui.preimage.css'
 
 // 导入MUI js
-import mui from './lib/mui/js/mui.min.js'
+import mui from './lib/mui/js/mui.js'
 
 Vue.prototype.mui = mui
 
@@ -26,19 +27,24 @@ Vue.use(VueResource)
 import moment from 'moment'
 
 // mint-ui [基于 Vue.js 的移动端组件库]
-import {
-    Lazyload,
-    Loadmore,
-    Spinner
-} from 'mint-ui';
+// import {
+//     Lazyload,
+//     Loadmore,
+//     Spinner
+// } from 'mint-ui';
 
+import mintui from 'mint-ui'
+Vue.use(mintui)
 import 'mint-ui/lib/style.css'
 
-Vue.component(Spinner.name, Spinner);
-Vue.component(Loadmore.name, Loadmore);
-Vue.use(Lazyload, {
-    error: require('./image/default.jpg')
-});
+
+// Vue.component(Spinner.name, Spinner);
+// Vue.component(Loadmore.name, Loadmore);
+// Vue.use(Lazyload, {
+//     // mint-ui 图片懒加载配置
+//     // 失败时默认图片
+//     error: require('./image/default.jpg')
+// });
 
 
 // 全局过滤器

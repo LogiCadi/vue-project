@@ -2,8 +2,8 @@
   <div class="news-info">
 
     <!-- 下拉刷新容器 -->
-    <div id="refreshContainer" class="mui-scroll-wrapper">
-      <div class="mui-scroll">
+    <!-- <div id="refreshContainer" class="mui-scroll-wrapper">
+      <div class="mui-scroll"> -->
 
         <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
           <h3>{{ newsInfo.title }}</h3>
@@ -33,8 +33,8 @@
 
           </div>
         </mt-loadmore>
-      </div>
-    </div>
+      <!-- </div>
+    </div> -->
   </div>
 
 </template>
@@ -103,16 +103,18 @@ export default {
 <style lang="scss">
 .news-info {
   // overflow: scroll;
-  height: 100%;
+  // height: 100%;
   // margin-bottom: 50px;
   img {
     width: 100%;
   }
-  padding: 5px;
+  .mui-scroll {
+    padding: 5px;
+  }
   h3 {
     text-align: center;
     font-size: 14px;
-    color: red;
+    color: #333;
   }
   p.time-click {
     margin-top: 20px;
@@ -122,6 +124,7 @@ export default {
     color: rgb(99, 160, 230);
   }
 }
+// 上拉加载样式
 .mint-loadmore-bottom span {
   display: inline-block;
   -webkit-transition: 0.2s linear;
