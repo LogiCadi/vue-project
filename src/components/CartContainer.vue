@@ -11,7 +11,7 @@
                         <a href="https://logicadi.gitee.io/web">@luokai</a> 发表于：1970-1-1 08:00</p>
                     <p style="color: #333;">
                         使用的是Vue.js + MUI做的
-                        <a href='https://baike.baidu.com/item/SPA/17536313?fr=aladdin'>单页面web</a>。 无刷新过程，接近原生APP的感觉。 后台可以用java做接口，nodejs的话也不错。 缺一个有创意的大佬。
+                        <a href='https://baike.baidu.com/item/SPA/17536313?fr=aladdin'>单页面web</a>。
                     </p>
                 </div>
             </div>

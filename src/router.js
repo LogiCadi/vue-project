@@ -51,6 +51,10 @@ const router = new VueRouter({
         {
             path: '/home/goodsList',
             component: resolve => require(['./components/GoodsList.vue'], resolve)
+        },
+        {
+            path: '/home/goodsInfo/:id',
+            component: resolve => require(['./components/GoodsInfo.vue'], resolve)
         }
     ],
     linkActiveClass: 'mui-active'

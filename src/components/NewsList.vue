@@ -7,7 +7,8 @@
         <router-link :to="'/home/newsInfo/'+item.id">
           <img class="mui-media-object mui-pull-left" :src="item.img_url" @error="item.img_url=defaultImg">
           <div class="mui-media-body">
-            {{ item.title }}
+            <p class="mui-ellipsis"> {{ item.title }}</p>
+
             <p class="mui-ellipsis">
               <span class="time">发表时间：{{ item.add_time | dateFormat }}</span>
               <span class="click">点击：{{ item.click }}次</span>
@@ -52,7 +53,10 @@ export default {
   .mui-table-view {
     margin-top: 0;
   }
-  .mui-ellipsis {
+  .mui-ellipsis:first-of-type {
+    color: #333;
+  }
+  .mui-ellipsis:last-of-type {
     font-size: 12px;
     color: rgb(99, 160, 230);
     display: flex;
