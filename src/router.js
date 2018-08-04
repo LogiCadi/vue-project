@@ -17,31 +17,32 @@ const router = new VueRouter({
 
         {
             path: '/home',
-            component: homeContainer
+            // component: homeContainer
+            component: resolve => require(['./components/HomeContainer.vue'], resolve)
         },
         {
             path: '/member',
-            component: memberContainer
+            component: resolve => require(['./components/MemberContainer.vue'], resolve)
         },
         {
             path: '/cart',
-            component: cartContainer
+            component: resolve => require(['./components/CartContainer.vue'], resolve)
         },
         {
             path: '/search',
-            component: searchContainer
+            component: resolve => require(['./components/SearchContainer.vue'], resolve)
         },
         {
             path: '/home/newsList',
-            component: newsList
+            component: resolve => require(['./components/NewsList.vue'], resolve)
         },
         {
             path: '/home/newsInfo/:id',
-            component: newsInfo
+            component: resolve => require(['./components/NewsInfo.vue'], resolve)
         },
         {
             path: '/home/photoList',
-            component: photoList
+            component: resolve => require(['./components/PhotoList.vue'], resolve)
         }
     ],
     linkActiveClass: 'mui-active'
