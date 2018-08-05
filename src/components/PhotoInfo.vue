@@ -155,7 +155,6 @@ export default {
     .mui-table-view-cell {
       img {
         width: 100%;
-        // margin: 4px 2vw;
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
         border-radius: 2px;
       }
