@@ -12,9 +12,13 @@
         <!-- 缩略图 -->
         <ul class="info-imgs mui-table-view mui-grid-view">
           <li v-for="item in thumImgs" :key="item.src" class="mui-table-view-cell mui-col-xs-6">
-            <a href="#">
-              <img @error="defaultImg" :src="item.src" data-preview-src="" data-preview-group="1" />
-            </a>
+
+            <!-- <img @error="defaultImg" :src="item.src" data-preview-src="" data-preview-group="1" /> -->
+
+            <!-- <vue-preview :slides="thumImgs" @close="handleClose"></vue-preview> -->
+            <img :src="item.src" preview="0" preview-text="描述文字">
+            <!-- <img class="preview-img" @click="$preview.open(index, thumImgs)" :src="item.src" alt=""> -->
+
           </li>
 
         </ul>
@@ -40,7 +44,6 @@
       </mt-loadmore>
     </div>
   </div>
-
 </template>
 <script>
 // 导入评论组件
@@ -65,9 +68,9 @@ export default {
   inject: ["defaultImg"],
   mounted() {
     this.$emit("change-title", "图片详情");
-
+    
     // 图片预览
-    this.mui.previewImage();
+    // this.mui.previewImage();
   },
   created() {
     this.getPhotoInfo();
@@ -114,8 +117,8 @@ export default {
         if (res.body.status !== 0) {
           this.mui.toast("获取数据失败");
         } else {
-          console.log(res.body.message);
-          // this.thumImgs = res.body.message;
+
+          // this.$previewRefresh();
         }
       });
     }
@@ -126,42 +129,40 @@ export default {
 <style lang="scss" scoped>
 .photo-info {
   height: 100vh;
-
   .wrapper {
-   
     padding-bottom: 50px;
-    // 头部
-    h3 {
-      text-align: center;
-      font-size: 14px;
-      color: #333;
+  }
+  // 头部
+  h3 {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+  }
+  p.time-click {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgb(99, 160, 230);
+  }
+  // 图片部分
+  .info-imgs {
+    &:before,
+    &:after {
+      position: relative;
     }
-    p.time-click {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: rgb(99, 160, 230);
-    }
-    // 图片部分
-    .info-imgs {
-      &:before,
-      &:after {
-        position: relative;
-      }
 
-      background-color: #efeff4;
-      img {
-        width: 100%;
-        // margin: 4px 2vw;
-        box-shadow: 0 0 3px #666;
-      }
+    background-color: #efeff4;
+    img {
+      width: 100%;
+      // margin: 4px 2vw;
+      box-shadow: 0 0 3px #666;
     }
-    // 正文部分
-    .info-content {
-      font-size: 14px;
-      line-height: 2;
-    }
+  }
+  // 正文部分
+  .info-content {
+    font-size: 14px;
+    line-height: 2;
   }
 }
 

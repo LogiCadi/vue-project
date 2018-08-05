@@ -11,8 +11,12 @@ import './lib/mui/css/mui.preimage.css'
 
 // 导入MUI js
 import mui from './lib/mui/js/mui.js'
-
 Vue.prototype.mui = mui
+
+// 图片预览插件
+import preview from 'vue-photo-preview'
+import 'vue-photo-preview/dist/skin.css'
+Vue.use(preview)
 
 // 引入app组件
 import app from './App.vue'

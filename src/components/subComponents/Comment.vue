@@ -30,8 +30,6 @@ export default {
 
   props: ["id"],
   methods: {
-    
-
     // 发表评论
     newComment() {
       this.$http
