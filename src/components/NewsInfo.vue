@@ -1,40 +1,39 @@
 <template>
   <div class="news-info">
 
-    <!-- 下拉刷新容器 -->
-    <!-- <div id="refreshContainer" class="mui-scroll-wrapper">
-      <div class="mui-scroll"> -->
-    <mt-loadmore class="wrapper " :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
+    <div class="mui-content-padded">
 
-      <h3>{{ newsInfo.title }}</h3>
+      <mt-loadmore class="wrapper" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
 
-      <p class="time-click">
-        <span class="time">发表时间：{{ newsInfo.add_time | dateFormat }}</span>
-        <span class="click">点击：{{ newsInfo.click }}次</span>
-      </p>
-      <hr>
-      <div class="content" v-html="newsInfo.content"></div>
+        <h3>{{ newsInfo.title }}</h3>
 
-      <comment ref="comment" :id="id"></comment>
+        <p class="time-click">
+          <span class="time">发表时间：{{ newsInfo.add_time | dateFormat }}</span>
+          <span class="click">点击：{{ newsInfo.click }}次</span>
+        </p>
+        <hr>
+        <div class="content" v-html="newsInfo.content"></div>
 
-      <div class="allLoaded" v-if="allLoaded">没有更多数据了</div>
+        <comment ref="comment" :id="id"></comment>
 
-      <div slot="bottom" class="mint-loadmore-bottom">
+        <div class="allLoaded" v-if="allLoaded">没有更多数据了</div>
 
-        <div v-show="bottomStatus !== 'loading'">
-          <span :class="{'mui-icon':true, 'mui-icon-arrowthinup':true, 'rotate': bottomStatus === 'drop' }"></span>
-          <span v-show="bottomStatus === 'pull'">上拉加载</span>
-          <span v-show="bottomStatus === 'drop'">释放更新</span>
+        <div slot="bottom" class="mint-loadmore-bottom">
+
+          <div v-show="bottomStatus !== 'loading'">
+            <span :class="{'mui-icon':true, 'mui-icon-arrowthinup':true, 'rotate': bottomStatus === 'drop' }"></span>
+            <span v-show="bottomStatus === 'pull'">上拉加载</span>
+            <span v-show="bottomStatus === 'drop'">释放更新</span>
+          </div>
+
+          <div v-show="bottomStatus === 'loading'">
+            <span class="mui-spinner"></span>
+            <span>正在刷新</span>
+          </div>
         </div>
 
-        <div v-show="bottomStatus === 'loading'">
-          <span class="mui-spinner"></span>
-          <span>正在刷新</span>
-        </div>
-      </div>
-
-    </mt-loadmore>
-
+      </mt-loadmore>
+    </div>
     <!-- </div>
     </div> -->
   </div>
@@ -61,7 +60,13 @@ export default {
       // indicators: false //是否显示滚动条
     });
 
-    // this.pullup();
+    // 初次获取评论数据
+    this.$refs.comment.getComments(isNodata => {
+      if (isNodata) {
+        // 上拉加载 数据全部加载完毕
+        this.allLoaded = true;
+      }
+    });
   },
   methods: {
     handleBottomChange(status) {
@@ -105,11 +110,11 @@ export default {
 <style lang="scss">
 .news-info {
   height: 100vh;
+  .mui-content-padded {
+    margin-bottom: 60px;
+  }
   img {
     width: 100%;
-  }
-  .wrapper {
-    padding-bottom: 50px;
   }
   h3 {
     text-align: center;
@@ -139,6 +144,5 @@ export default {
 .allLoaded {
   text-align: center;
   line-height: 50px;
-  padding-bottom: 80px;
 }
 </style>

@@ -23,11 +23,6 @@ export default {
       content: ""
     };
   },
-
-  created() {
-    this.getComments();
-  },
-
   props: ["id"],
   methods: {
     // 发表评论
@@ -56,13 +51,13 @@ export default {
           if (res.body.status !== 0) {
             this.mui.toast("请求失败");
           } else {
-            if (res.body.message.length > 0) {
-              //   this.list = [...this.list, ...res.body.message];
-              this.list = this.list.concat(res.body.message);
-              callback && callback();
-            } else {
+            //   this.list = [...this.list, ...res.body.message];
+            this.list = this.list.concat(res.body.message);
+            if (res.body.message.length < 10) {
               // 没有更多数据了
               callback && callback(true);
+            } else {
+              callback && callback();
             }
           }
         });

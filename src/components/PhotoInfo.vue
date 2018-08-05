@@ -13,11 +13,7 @@
         <ul class="info-imgs mui-table-view mui-grid-view">
           <li v-for="item in thumImgs" :key="item.src" class="mui-table-view-cell mui-col-xs-6">
 
-            <!-- <img @error="defaultImg" :src="item.src" data-preview-src="" data-preview-group="1" /> -->
-
-            <!-- <vue-preview :slides="thumImgs" @close="handleClose"></vue-preview> -->
             <img :src="item.src" preview="0" preview-text="描述文字">
-            <!-- <img class="preview-img" @click="$preview.open(index, thumImgs)" :src="item.src" alt=""> -->
 
           </li>
 
@@ -68,9 +64,13 @@ export default {
   inject: ["defaultImg"],
   mounted() {
     this.$emit("change-title", "图片详情");
-    
-    // 图片预览
-    // this.mui.previewImage();
+
+    this.$refs.comment.getComments(isNodata => {
+      if (isNodata) {
+        // 上拉加载 数据全部加载完毕
+        this.allLoaded = true;
+      }
+    });
   },
   created() {
     this.getPhotoInfo();
@@ -117,8 +117,7 @@ export default {
         if (res.body.status !== 0) {
           this.mui.toast("获取数据失败");
         } else {
-
-          // this.$previewRefresh();
+          this.$previewRefresh();
         }
       });
     }
@@ -129,8 +128,8 @@ export default {
 <style lang="scss" scoped>
 .photo-info {
   height: 100vh;
-  .wrapper {
-    padding-bottom: 50px;
+  .mui-content-padded {
+    margin-bottom: 60px;
   }
   // 头部
   h3 {
@@ -181,6 +180,5 @@ export default {
 .allLoaded {
   text-align: center;
   line-height: 50px;
-  padding-bottom: 80px;
 }
 </style>
