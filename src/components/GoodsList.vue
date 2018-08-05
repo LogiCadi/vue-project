@@ -1,50 +1,51 @@
 <template>
-    <div class="goods-list">
+  <div class="goods-list">
+    <div class="content-wrap">
+      <mt-loadmore class="wrapper" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
 
-        <mt-loadmore class="wrapper" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" @bottom-status-change="handleBottomChange" :auto-fill="false" ref="loadmore">
-
-            <ul>
-                <li v-for="item in list" :key="item.id">
-                    <div class="card">
-                        <a href="#">
-                            <!-- 图片炸了 -->
-                            <img :src="image">
-                            <div class="title-wraper">
-                                <div class="title">{{ item.title }}</div>
-                            </div>
-                            <div class="desc">
-                                <p>
-                                    <span class="now">￥ {{ item.sell_price }}</span>
-                                    <span class="old">￥ {{ item.market_price }}</span>
-                                </p>
-                                <p>
-                                    <span>热卖中</span>
-                                    <span>剩余{{ item.stock_quantity }}件</span>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-            </ul>
-
-            <div class="allLoaded" v-if="allLoaded">没有更多数据了</div>
-
-            <div slot="bottom" class="mint-loadmore-bottom">
-
-                <div v-show="bottomStatus !== 'loading'">
-                    <span :class="{'mui-icon':true, 'mui-icon-arrowthinup':true, 'rotate': bottomStatus === 'drop' }"></span>
-                    <span v-show="bottomStatus === 'pull'">上拉加载</span>
-                    <span v-show="bottomStatus === 'drop'">释放更新</span>
+        <ul>
+          <li v-for="item in list" :key="item.id">
+            <div class="card">
+              <a href="#">
+                <!-- 图片炸了 -->
+                <img :src="image">
+                <div class="title-wraper">
+                  <div class="title">{{ item.title }}</div>
                 </div>
-
-                <div v-show="bottomStatus === 'loading'">
-                    <span class="mui-spinner"></span>
-                    <span>正在刷新</span>
+                <div class="desc">
+                  <p>
+                    <span class="now">￥ {{ item.sell_price }}</span>
+                    <span class="old">￥ {{ item.market_price }}</span>
+                  </p>
+                  <p>
+                    <span>热卖中</span>
+                    <span>剩余{{ item.stock_quantity }}件</span>
+                  </p>
                 </div>
-
+              </a>
             </div>
-        </mt-loadmore>
+          </li>
+        </ul>
+
+        <div class="allLoaded" v-if="allLoaded">没有更多数据了</div>
+
+        <div slot="bottom" class="mint-loadmore-bottom">
+
+          <div v-show="bottomStatus !== 'loading'">
+            <span :class="{'mui-icon':true, 'mui-icon-arrowthinup':true, 'rotate': bottomStatus === 'drop' }"></span>
+            <span v-show="bottomStatus === 'pull'">上拉加载</span>
+            <span v-show="bottomStatus === 'drop'">释放更新</span>
+          </div>
+
+          <div v-show="bottomStatus === 'loading'">
+            <span class="mui-spinner"></span>
+            <span>正在刷新</span>
+          </div>
+
+        </div>
+      </mt-loadmore>
     </div>
+  </div>
 </template>
 
 <script>
@@ -64,7 +65,11 @@ export default {
   },
   mounted() {
     this.$emit("change-title", "商品列表");
-    this.getList();
+    this.getList(isNodata => {
+      if (isNodata) {
+        this.allLoaded = true;
+      }
+    });
   },
   methods: {
     // 获得商品列表
@@ -73,12 +78,12 @@ export default {
         if (res.body.status !== 0) {
           this.mui.toast("请求失败");
         } else {
-          if (res.body.message.length > 0) {
-            this.list = this.list.concat(res.body.message);
-            callback && callback();
-          } else {
+          this.list = this.list.concat(res.body.message);
+          if (res.body.message.length < 10) {
             // 没有数据了
             callback && callback(true);
+          } else {
+            callback && callback();
           }
         }
       });
@@ -108,9 +113,10 @@ export default {
 <style lang="scss" scoped>
 .goods-list {
   height: 100vh;
-  .wrapper {
-    padding-bottom: 50px;
+  .content-wrap {
+    margin-bottom: 50px;
   }
+
   ul {
     margin: 0;
     padding: 0 5px 8px 0;

@@ -1,16 +1,15 @@
 import Vue from 'vue';
 
-// 导入vue-router
+// 导入vue-router 核心路由插件
 import VueRouter from 'vue-router';
 Vue.use(VueRouter)
 
 // 导入MUI css
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
-import './lib/mui/css/mui.preimage.css'
 
 // 导入MUI js
-import mui from './lib/mui/js/mui.js'
+import mui from './lib/mui/js/mui.min.js'
 Vue.prototype.mui = mui
 
 // 图片预览插件
@@ -23,40 +22,31 @@ import app from './App.vue'
 // 引入路由容器
 import router from './router.js'
 
-// 导入vue-resource
+// 导入vue-resource插件 进行ajax请求
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
-// 导入moment 格式化时间
+// 导入moment插件 格式化时间
 import moment from 'moment'
 
-// mint-ui [基于 Vue.js 的移动端组件库]
-// import {
-//     Lazyload,
-//     Loadmore,
-//     Spinner
-// } from 'mint-ui';
-
+// 导入Mint-UI 
 import mintui from 'mint-ui'
-Vue.use(mintui)
 import 'mint-ui/lib/style.css'
-
-
-// Vue.component(Spinner.name, Spinner);
-// Vue.component(Loadmore.name, Loadmore);
-// Vue.use(Lazyload, {
-//     // mint-ui 图片懒加载配置
-//     // 失败时默认图片
-//     error: require('./image/default.jpg')
-// });
-
+Vue.use(mintui)
 
 // 全局过滤器
+/**
+ * 日期格式化
+ * @param data 待格式化的日期
+ * @param pattern 转换格式，请参考手册
+ */
 Vue.filter('dateFormat', function (date, pattern = 'YYYY-MM-DD HH:mm:ss') {
     return moment(date).format(pattern)
 })
 
+// vue-resource 请求根路径
 Vue.http.options.root = 'http://47.89.21.179:8080/api'
+// 处理post请求表单提交问题
 Vue.http.options.emulateJSON = true
 
 // vue实例
