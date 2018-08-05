@@ -58,7 +58,7 @@ export default {
         } else {
           this.imgs = res.body.message;
           this.imgs.forEach(item => {
-            item.img_url = require('../image/milkyway1.jpg')
+            item.img_url = require("../image/milkyway1.jpg");
           });
         }
       });
@@ -84,9 +84,10 @@ export default {
   }
   img {
     width: 100%;
+    vertical-align: top;
   }
   .mui-card {
-    box-shadow: 0 0 6px #888;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
     max-height: 67vw;
     background-color: #ccc;
     text-align: center;

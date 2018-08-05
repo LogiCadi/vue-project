@@ -152,10 +152,14 @@ export default {
     }
 
     background-color: #efeff4;
-    img {
-      width: 100%;
-      // margin: 4px 2vw;
-      box-shadow: 0 0 3px #666;
+    .mui-table-view-cell {
+      overflow: visible;
+      img {
+        width: 100%;
+        // margin: 4px 2vw;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        vertical-align: top;
+      }
     }
   }
   // 正文部分
