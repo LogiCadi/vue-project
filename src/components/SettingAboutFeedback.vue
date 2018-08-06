@@ -12,12 +12,12 @@
 
                     <div :style="{backgroundImage : 'url('+item.file.src+')'}" class="image-item" v-for="(item,index) of imgList" :key="item.file.src">
                         <div @click="fileDel(index)" class="image-close">X</div>
-                        <input @change="fileChange($event)" type="file" accept="image/*">
+                        <input @change="fileChange($event)" type="file" accept="image/*" multiple>
                     </div>
 
                     <div class="image-item space">
                         <div class="image-close">X</div>
-                        <input @change="fileChange($event)" type="file" accept="image/*">
+                        <input @change="fileChange($event)" type="file" accept="image/*" multiple>
                     </div>
 
                 </div>
