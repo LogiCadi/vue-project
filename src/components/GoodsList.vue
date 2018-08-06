@@ -6,7 +6,7 @@
         <ul>
           <li v-for="item in list" :key="item.id">
             <div class="card">
-              <a href="#">
+              <router-link :to="'/home/goodsInfo/' + item.id">
                 <!-- 图片炸了 -->
                 <img :src="image">
                 <div class="title-wraper">
@@ -22,26 +22,22 @@
                     <span>剩余{{ item.stock_quantity }}件</span>
                   </p>
                 </div>
-              </a>
+              </router-link>
             </div>
           </li>
         </ul>
 
         <div class="allLoaded" v-if="allLoaded">没有更多数据了</div>
-
         <div slot="bottom" class="mint-loadmore-bottom">
-
           <div v-show="bottomStatus !== 'loading'">
             <span :class="{'mui-icon':true, 'mui-icon-arrowthinup':true, 'rotate': bottomStatus === 'drop' }"></span>
             <span v-show="bottomStatus === 'pull'">上拉加载</span>
             <span v-show="bottomStatus === 'drop'">释放更新</span>
           </div>
-
           <div v-show="bottomStatus === 'loading'">
             <span class="mui-spinner"></span>
             <span>正在刷新</span>
           </div>
-
         </div>
       </mt-loadmore>
     </div>
