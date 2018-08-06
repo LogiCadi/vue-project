@@ -29,8 +29,8 @@ const router = new VueRouter({
             component: resolve => require(['./components/CartContainer.vue'], resolve)
         },
         {
-            path: '/search',
-            component: resolve => require(['./components/SearchContainer.vue'], resolve)
+            path: '/setting',
+            component: resolve => require(['./components/SettingContainer.vue'], resolve)
         },
         {
             path: '/home/newsList',
@@ -55,7 +55,32 @@ const router = new VueRouter({
         {
             path: '/home/goodsInfo/:id',
             component: resolve => require(['./components/GoodsInfo.vue'], resolve)
+        },
+        {
+            path: '/setting/account',
+            component: resolve => require(['./components/SettingAccount.vue'], resolve)
+        },
+        {
+            path: '/setting/notice',
+            component: resolve => require(['./components/SettingNotice.vue'], resolve)
+        },
+        {
+            path: '/setting/private',
+            component: resolve => require(['./components/SettingPrivate.vue'], resolve)
+        },
+        {
+            path: '/setting/general',
+            component: resolve => require(['./components/SettingGeneral.vue'], resolve)
+        },
+        {
+            path: '/setting/about',
+            component: resolve => require(['./components/SettingAbout.vue'], resolve)
+        },
+        {
+            path: '/setting/about/feedback',
+            component: resolve => require(['./components/SettingAboutFeedback.vue'], resolve)
         }
+
     ],
     linkActiveClass: 'mui-active'
 })

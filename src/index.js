@@ -12,6 +12,9 @@ import './lib/mui/css/icons-extra.css'
 import mui from './lib/mui/js/mui.min.js'
 Vue.prototype.mui = mui
 
+// feedback
+import './lib/mui/css/feedback-page.css'
+
 // 图片预览插件
 import preview from 'vue-photo-preview'
 import 'vue-photo-preview/dist/skin.css'
