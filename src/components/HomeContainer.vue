@@ -79,13 +79,15 @@ export default {
     initSwiper() {
       // 设备宽度
       var deviceWidth = document.documentElement.clientWidth;
-      var wrapper = document.getElementsByClassName("home-container")[0];
+      var wrapper = document.querySelector(".home-container");
 
       var start = 0;
       var distence = 0;
       wrapper.addEventListener("touchstart", e => {
         start = e.touches[0].clientX;
       });
+
+      
       wrapper.addEventListener("touchmove", e => {
         var move = e.touches[0].clientX;
         distence = move - start;

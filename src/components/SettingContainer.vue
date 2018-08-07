@@ -54,7 +54,7 @@ export default {
     initSwiper() {
       // 设备宽度
       var deviceWidth = document.documentElement.clientWidth;
-      var wrapper = document.getElementsByClassName("setting-container")[0];
+      var wrapper = document.querySelector(".setting-container");
 
       var start = 0;
       var distence = 0;
