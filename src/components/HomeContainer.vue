@@ -3,46 +3,47 @@
 
     <!-- 轮播图 -->
     <image-swipe :list="list"></image-swipe>
-    <!-- 九宫格 -->
-    <ul class="mui-table-view mui-grid-view mui-grid-9">
-      <li class="mui-table-view-cell mui-media mui-col-xs-4">
-        <router-link to="/home/photoList">
-          <span class="mui-icon mui-icon-image"></span>
-          <div class="mui-media-body">图片分享</div>
-        </router-link>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4">
-        <router-link to="/home/goodsList">
-          <span class="mui-icon mui-icon-extra mui-icon-extra-gift"></span>
-          <div class="mui-media-body">商品购买</div>
-        </router-link>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4">
-        <router-link to="/home/newsList">
-          <span class="mui-icon mui-icon-star-filled"></span>
-          <div class="mui-media-body">新闻资讯</div>
-        </router-link>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4">
-        <a href="#">
-          <span class="mui-icon mui-icon-chatboxes"></span>
-          <div class="mui-media-body">留言反馈</div>
-        </a>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4">
-        <a href="#">
-          <span class="mui-icon mui-icon-videocam"></span>
-          <div class="mui-media-body">视频专区</div>
-        </a>
-      </li>
-      <li class="mui-table-view-cell mui-media mui-col-xs-4">
-        <a href="#">
-          <span class="mui-icon mui-icon-email"></span>
-          <div class="mui-media-body">联系我们</div>
-        </a>
-      </li>
-    </ul>
-
+    <div class="content" :style="{height:contentHeight+'px'}">
+      <!-- 九宫格 -->
+      <ul class="mui-table-view mui-grid-view mui-grid-9">
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+          <router-link to="/home/photoList">
+            <span class="mui-icon mui-icon-image"></span>
+            <div class="mui-media-body">图片分享</div>
+          </router-link>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+          <router-link to="/home/goodsList">
+            <span class="mui-icon mui-icon-extra mui-icon-extra-gift"></span>
+            <div class="mui-media-body">商品购买</div>
+          </router-link>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+          <router-link to="/home/newsList">
+            <span class="mui-icon mui-icon-star-filled"></span>
+            <div class="mui-media-body">新闻资讯</div>
+          </router-link>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+          <a href="#">
+            <span class="mui-icon mui-icon-chatboxes"></span>
+            <div class="mui-media-body">留言反馈</div>
+          </a>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+          <a href="#">
+            <span class="mui-icon mui-icon-videocam"></span>
+            <div class="mui-media-body">视频专区</div>
+          </a>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4">
+          <a href="#">
+            <span class="mui-icon mui-icon-email"></span>
+            <div class="mui-media-body">联系我们</div>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 
 </template>
@@ -71,15 +72,21 @@ export default {
           img: require("../image/milkyway6.jpg")
         }
       ],
-      effect: "slide"
+      // 内容区域高度
+      contentHeight: 0
     };
   },
   methods: {
+    initContentHeight() {
+      var deviceWidth = document.documentElement.clientWidth;
+      var deviceHeight = document.documentElement.clientHeight;
+      this.contentHeight = deviceHeight - 95 - deviceWidth * 0.625;
+    },
     // 左右滑动 切换页面
     initSwiper() {
       // 设备宽度
       var deviceWidth = document.documentElement.clientWidth;
-      var wrapper = document.querySelector(".mui-table-view");
+      var wrapper = document.querySelector(".content");
       var container = document.querySelector(".home-container");
 
       var start = 0;
@@ -128,15 +135,14 @@ export default {
       interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
     });
     this.initSwiper();
+    this.initContentHeight();
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .home-container {
-  //   height: 100vh;
   .mui-table-view {
-    height: 50vh;
     background-color: #efeff4;
   }
   .mui-media-body {

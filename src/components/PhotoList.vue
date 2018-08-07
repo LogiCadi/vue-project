@@ -79,7 +79,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .photo-list {
-  height: 100%;
+  // height: 100%;
   .mui-scroll {
     position: fixed;
     background-color: #efeff4;
@@ -96,7 +96,6 @@ export default {
     height: 58vw;
     background-color: #ccc;
     text-align: center;
-
     img[lazy="loading"] {
       padding-top: 20vw;
       width: 40px;

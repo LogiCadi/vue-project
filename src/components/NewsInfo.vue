@@ -109,10 +109,10 @@ export default {
 
 <style lang="scss">
 .news-info {
-  height: 100vh;
-  .mui-content-padded {
-    margin-bottom: 60px;
-  }
+  // height: 100vh;
+  // .mui-content-padded {
+  //   margin-bottom: 60px;
+  // }
   img {
     width: 100%;
   }

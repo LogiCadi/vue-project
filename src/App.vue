@@ -98,9 +98,10 @@ export default {
 
 .app-container {
   overflow-x: hidden;
+  height: 100vh;
 }
 .mui-content {
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   padding-bottom: 50px;
   position: relative;
