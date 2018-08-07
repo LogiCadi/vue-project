@@ -101,7 +101,7 @@ export default {
   height: 100vh;
 }
 .mui-content {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   padding-bottom: 50px;
   position: relative;
