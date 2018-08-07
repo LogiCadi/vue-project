@@ -1,5 +1,7 @@
 <template>
+
   <div class="member-container">
+
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -13,8 +15,45 @@
 
 <script>
 export default {
+  data() {
+    return {
+      swiperTranslate: 0
+    };
+  },
   mounted() {
     this.$emit("change-title", "会员中心");
+    // 左右滑动切换页面
+    this.initSwiper();
+  },
+  methods: {
+    initSwiper() {
+      // 设备宽度
+      var deviceWidth = document.documentElement.clientWidth;
+      var wrapper = document.getElementsByClassName('member-container')[0]
+  
+      var start = 0;
+      var distence = 0;
+      wrapper.addEventListener("touchstart", e => {
+        start = e.touches[0].clientX;
+      });
+      wrapper.addEventListener("touchmove", e => {
+        var move = e.touches[0].clientX;
+        distence = move - start;
+
+        wrapper.style.left = distence + "px";
+      });
+      wrapper.addEventListener("touchend", e => {
+        if (distence >= deviceWidth / 3) {
+          wrapper.style.display = "none";
+          this.$router.push("/home");
+        } else if (-distence >= deviceWidth / 3) {
+          this.$router.push("/cart");
+        } else {
+          wrapper.style.left = 0 + "px";
+        }
+        start = distence = 0;
+      });
+    }
   }
 };
 </script>

@@ -95,9 +95,10 @@ export default {
   overflow-x: hidden;
 }
 .mui-content {
+  min-height: 100vh;
   width: 100%;
   padding-bottom: 50px;
-  // position: relative;
+  position: relative;
 }
 
 // MUI的坑

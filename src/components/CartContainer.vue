@@ -1,5 +1,5 @@
 <template>
-    <div class="cart-container">
+    <div class="cart-container" id="swiper-wrapper">
 
         <div class="mui-card">
             <div class="mui-card-header mui-card-media" ref="header">
@@ -15,7 +15,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <!-- <div class="mui-card-footer">
                 <a class="mui-card-link">Like</a>
                 <a class="mui-card-link">Read more</a>
@@ -39,6 +39,41 @@ export default {
     this.$refs.header.style.backgroundImage =
       "url(" + require("../image/milkyway7.jpg") + ")";
     this.changeBadge("cart", 0);
+
+    this.initSwiper()
+  },
+  methods: {
+    // 左右滑动 切换页面
+    initSwiper() {
+      // 设备宽度
+      var deviceWidth = document.documentElement.clientWidth;
+      var wrapper = document.getElementsByClassName('cart-container')[0]
+
+      var start = 0;
+      var distence = 0;
+      wrapper.addEventListener("touchstart", e => {
+        start = e.touches[0].clientX;
+      });
+      wrapper.addEventListener("touchmove", e => {
+        var move = e.touches[0].clientX;
+        distence = move - start;
+
+        wrapper.style.left = distence + "px";
+      });
+      wrapper.addEventListener("touchend", e => {
+        if (distence >= deviceWidth / 3) {
+          // 左滑切换
+          wrapper.style.display = "none";
+          this.$router.push("/member");
+        } else if (-distence >= deviceWidth / 3) {
+          // 右滑切换
+          this.$router.push("/setting");
+        } else {
+          wrapper.style.left = 0 + "px";
+        }
+        start = distence = 0;
+      });
+    }
   }
 };
 </script>
