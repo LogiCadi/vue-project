@@ -25,7 +25,7 @@
 </template>
 <script>
 export default {
-  props:['list'],
+  props: ["list"],
   mounted() {
     //获得slider插件对象
     var gallery = this.mui(".mui-slider");

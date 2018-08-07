@@ -9,10 +9,8 @@ import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 
 // 导入MUI js
-import mui from './lib/mui/js/mui.min.js'
+import mui from './lib/mui/js/mui.js'
 Vue.prototype.mui = mui
-
-import 'eruda'
 
 // feedback 样式
 import './lib/mui/css/feedback-page.css'

@@ -16,11 +16,8 @@
 <script>
 export default {
   data() {
-    return {
-      swiperTranslate: 0
-    };
+    return {};
   },
-
   mounted() {
     this.$emit("change-title", "会员中心");
     // 左右滑动切换页面
@@ -33,29 +30,29 @@ export default {
       var wrapper = document.querySelector(".member-container");
 
       var start = 0;
-      var distence = 0;
+      var distance = 0;
       wrapper.addEventListener("touchstart", e => {
         start = e.touches[0].clientX;
       });
       wrapper.addEventListener("touchmove", e => {
         var move = e.touches[0].clientX;
-        distence = move - start;
+        distance = move - start;
 
-        wrapper.style.left = distence + "px";
+        wrapper.style.left = distance + "px";
       });
       wrapper.addEventListener("touchend", e => {
-        if (distence >= deviceWidth / 3) {
+        if (distance >= deviceWidth / 3) {
           wrapper.style.display = "none";
           this.$emit("change-translate", "left");
           this.$router.push("/home");
-        } else if (-distence >= deviceWidth / 3) {
+        } else if (-distance >= deviceWidth / 3) {
           wrapper.style.display = "none";
           this.$emit("change-translate", "right");
           this.$router.push("/cart");
         } else {
           wrapper.style.left = 0 + "px";
         }
-        start = distence = 0;
+        start = distance = 0;
       });
     }
   }

@@ -18,7 +18,7 @@ eval("Object.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nva
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("Object.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\nexports.default = {\n  props: ['list'],\n  mounted: function mounted() {\n    //获得slider插件对象\n    var gallery = this.mui(\".mui-slider\");\n    gallery.slider({\n      interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；\n    });\n  }\n};\n\n//# sourceURL=webpack:///./src/components/subComponents/ImageSwipe.vue?./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options");
+eval("Object.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n\nexports.default = {\n  props: [\"list\"],\n  mounted: function mounted() {\n    //获得slider插件对象\n    var gallery = this.mui(\".mui-slider\");\n    gallery.slider({\n      interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；\n    });\n  }\n};\n\n//# sourceURL=webpack:///./src/components/subComponents/ImageSwipe.vue?./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
