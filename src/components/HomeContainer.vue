@@ -84,17 +84,21 @@ export default {
       var start = 0;
       var distence = 0;
       wrapper.addEventListener("touchstart", e => {
+        console.log("start");
         start = e.touches[0].clientX;
       });
 
-      
       wrapper.addEventListener("touchmove", e => {
+        console.log("move");
+
         var move = e.touches[0].clientX;
         distence = move - start;
 
         wrapper.style.left = distence + "px";
       });
       wrapper.addEventListener("touchend", e => {
+        console.log("end");
+
         if (-distence >= deviceWidth / 3) {
           // 右滑切换
           wrapper.style.display = "none";

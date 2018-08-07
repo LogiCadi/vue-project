@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --mode development --watch --config webpack.config.js",
-    "dev": "webpack-dev-server --mode development --open"
+    "dev": "webpack-dev-server --mode development --open --host 192.168.2.113"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^3.3.7",
     "css-loader": "^1.0.0",
+    "eruda": "^1.5.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "image-webpack-loader": "^4.3.1",
