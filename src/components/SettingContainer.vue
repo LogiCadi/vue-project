@@ -71,6 +71,7 @@ export default {
         if (distence >= deviceWidth / 3) {
           // 左滑切换
           wrapper.style.display = "none";
+          this.$emit("change-translate", "left");
           this.$router.push("/cart");
         } else {
           wrapper.style.left = 0 + "px";

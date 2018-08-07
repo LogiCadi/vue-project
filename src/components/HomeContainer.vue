@@ -1,51 +1,50 @@
 <template>
   <div class="home-container">
-    <div class="swiper-wrapper">
 
-      <!-- 轮播图 -->
-      <image-swipe :list="list"></image-swipe>
-      <!-- 九宫格 -->
-      <ul class="mui-table-view mui-grid-view mui-grid-9">
-        <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <router-link to="/home/photoList">
-            <span class="mui-icon mui-icon-image"></span>
-            <div class="mui-media-body">图片分享</div>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <router-link to="/home/goodsList">
-            <span class="mui-icon mui-icon-extra mui-icon-extra-gift"></span>
-            <div class="mui-media-body">商品购买</div>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <router-link to="/home/newsList">
-            <span class="mui-icon mui-icon-star-filled"></span>
-            <div class="mui-media-body">新闻资讯</div>
-          </router-link>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <a href="#">
-            <span class="mui-icon mui-icon-chatboxes"></span>
-            <div class="mui-media-body">留言反馈</div>
-          </a>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <a href="#">
-            <span class="mui-icon mui-icon-videocam"></span>
-            <div class="mui-media-body">视频专区</div>
-          </a>
-        </li>
-        <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <a href="#">
-            <span class="mui-icon mui-icon-email"></span>
-            <div class="mui-media-body">联系我们</div>
-          </a>
-        </li>
-      </ul>
+    <!-- 轮播图 -->
+    <image-swipe :list="list"></image-swipe>
+    <!-- 九宫格 -->
+    <ul class="mui-table-view mui-grid-view mui-grid-9">
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+        <router-link to="/home/photoList">
+          <span class="mui-icon mui-icon-image"></span>
+          <div class="mui-media-body">图片分享</div>
+        </router-link>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+        <router-link to="/home/goodsList">
+          <span class="mui-icon mui-icon-extra mui-icon-extra-gift"></span>
+          <div class="mui-media-body">商品购买</div>
+        </router-link>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+        <router-link to="/home/newsList">
+          <span class="mui-icon mui-icon-star-filled"></span>
+          <div class="mui-media-body">新闻资讯</div>
+        </router-link>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+        <a href="#">
+          <span class="mui-icon mui-icon-chatboxes"></span>
+          <div class="mui-media-body">留言反馈</div>
+        </a>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+        <a href="#">
+          <span class="mui-icon mui-icon-videocam"></span>
+          <div class="mui-media-body">视频专区</div>
+        </a>
+      </li>
+      <li class="mui-table-view-cell mui-media mui-col-xs-4">
+        <a href="#">
+          <span class="mui-icon mui-icon-email"></span>
+          <div class="mui-media-body">联系我们</div>
+        </a>
+      </li>
+    </ul>
 
-    </div>
   </div>
+
 </template>
 <script>
 import imageSwipe from "./subComponents/ImageSwipe.vue";
@@ -75,17 +74,12 @@ export default {
       effect: "slide"
     };
   },
-  provide() {
-    return {
-      effect: this.effect
-    };
-  },
   methods: {
     // 左右滑动 切换页面
     initSwiper() {
       // 设备宽度
       var deviceWidth = document.documentElement.clientWidth;
-      var wrapper = document.getElementsByClassName('home-container')[0]
+      var wrapper = document.getElementsByClassName("home-container")[0];
 
       var start = 0;
       var distence = 0;
@@ -101,6 +95,8 @@ export default {
       wrapper.addEventListener("touchend", e => {
         if (-distence >= deviceWidth / 3) {
           // 右滑切换
+          wrapper.style.display = "none";
+          this.$emit("change-translate", "right");
           this.$router.push("/member");
         } else {
           wrapper.style.left = 0 + "px";

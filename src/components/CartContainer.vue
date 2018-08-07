@@ -38,16 +38,16 @@ export default {
 
     this.$refs.header.style.backgroundImage =
       "url(" + require("../image/milkyway7.jpg") + ")";
+    // 消除footer中的徽章个数
     this.changeBadge("cart", 0);
-
-    this.initSwiper()
+    this.initSwiper();
   },
   methods: {
     // 左右滑动 切换页面
     initSwiper() {
       // 设备宽度
       var deviceWidth = document.documentElement.clientWidth;
-      var wrapper = document.getElementsByClassName('cart-container')[0]
+      var wrapper = document.getElementsByClassName("cart-container")[0];
 
       var start = 0;
       var distence = 0;
@@ -64,9 +64,12 @@ export default {
         if (distence >= deviceWidth / 3) {
           // 左滑切换
           wrapper.style.display = "none";
+          this.$emit("change-translate", "left");
           this.$router.push("/member");
         } else if (-distence >= deviceWidth / 3) {
           // 右滑切换
+          wrapper.style.display = "none";
+          this.$emit("change-translate", "right");
           this.$router.push("/setting");
         } else {
           wrapper.style.left = 0 + "px";
@@ -80,7 +83,6 @@ export default {
 
 <style lang="scss" scoped>
 .cart-container {
-  height: 100%;
   .mui-card-media {
     height: 40vw;
     background-size: cover;

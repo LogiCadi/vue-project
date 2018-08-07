@@ -52,6 +52,7 @@ export default {
   },
   methods: {
     getImgs(catId) {
+      window.scrollTo(0, 0);
       this.$http.get("getimages/" + catId).then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("获取数据失败");
@@ -79,6 +80,10 @@ export default {
 <style lang="scss" scoped>
 .photo-list {
   height: 100%;
+  .mui-scroll {
+    position: fixed;
+    background-color: #efeff4;
+  }
   li {
     list-style: none;
   }
@@ -87,13 +92,14 @@ export default {
     vertical-align: top;
   }
   .mui-card {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
-    max-height: 67vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    height: 58vw;
     background-color: #ccc;
     text-align: center;
+
     img[lazy="loading"] {
+      padding-top: 20vw;
       width: 40px;
-      height: 67vw;
     }
   }
   .mui-slider-title {

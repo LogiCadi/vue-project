@@ -20,6 +20,7 @@ export default {
       swiperTranslate: 0
     };
   },
+
   mounted() {
     this.$emit("change-title", "会员中心");
     // 左右滑动切换页面
@@ -29,8 +30,8 @@ export default {
     initSwiper() {
       // 设备宽度
       var deviceWidth = document.documentElement.clientWidth;
-      var wrapper = document.getElementsByClassName('member-container')[0]
-  
+      var wrapper = document.getElementsByClassName("member-container")[0];
+
       var start = 0;
       var distence = 0;
       wrapper.addEventListener("touchstart", e => {
@@ -45,8 +46,11 @@ export default {
       wrapper.addEventListener("touchend", e => {
         if (distence >= deviceWidth / 3) {
           wrapper.style.display = "none";
+          this.$emit("change-translate", "left");
           this.$router.push("/home");
         } else if (-distence >= deviceWidth / 3) {
+          wrapper.style.display = "none";
+          this.$emit("change-translate", "right");
           this.$router.push("/cart");
         } else {
           wrapper.style.left = 0 + "px";

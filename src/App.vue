@@ -6,7 +6,7 @@
     </header>
 
     <transition>
-      <router-view @change-title="changeTitle" class="mui-content"></router-view>
+      <router-view @change-translate="changeTranslate" @change-title="changeTitle" :class="['mui-content', direct]"></router-view>
     </transition>
 
     <nav class="mui-bar mui-bar-tab" v-if="footer">
@@ -47,7 +47,8 @@ export default {
       badge: {
         cart: 1,
         search: 0
-      }
+      },
+      direct: "right"
     };
   },
   provide() {
@@ -61,13 +62,17 @@ export default {
     };
   },
   watch: {
-    // "$route.path": function(newVal, oldVal) {
-    //   if (newVal.indexOf("/home/newsInfo/") == 0) {
-    //     this.$router.go(0);
-    //   }
-    // }
+    direct: function() {
+      setTimeout(() => {
+        this.direct = "right";
+      }, 500);
+    }
   },
   methods: {
+    // 改变左右滑动方向
+    changeTranslate(direct) {
+      this.direct = direct;
+    },
     changeTitle(title) {
       this.title = title;
     }
@@ -106,14 +111,24 @@ export default {
 //   touch-action: none;
 // }
 
-.v-enter {
+.right.v-enter {
   opacity: 0;
   transform: translateX(100%);
 }
 
-.v-leave-to {
+.right.v-leave-to {
   opacity: 0;
   transform: translateX(-100%);
+  position: absolute !important;
+}
+.left.v-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.left.v-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
   position: absolute !important;
 }
 
