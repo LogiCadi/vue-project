@@ -74,7 +74,6 @@ export default {
       });
 
       wrapper.addEventListener("touchend", e => {
-        console.log(distance);
         if (isMove) {
           if (distance >= deviceWidth / 3) {
             wrapper.style.display = "none";

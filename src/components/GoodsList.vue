@@ -66,20 +66,8 @@ export default {
         this.allLoaded = true;
       }
     });
-
-    this.scrollChange();
   },
   methods: {
-    // 向下滚动 改变分类栏的透明度
-    scrollChange() {
-      document.addEventListener("scroll", function() {
-        var opVar = document.documentElement.scrollTop / 10;
-        console.log(opVar);
-
-        document.querySelector(".mui-scroll-wrapper").style.opacity =
-          0.3 + opVar;
-      });
-    },
     // 获得商品列表
     getList(callback) {
       this.$http.get("getgoods?pageindex=" + this.pageIndex).then(res => {
