@@ -90,27 +90,40 @@ export default {
       var wrapper = document.querySelector(".content");
       var container = document.querySelector(".home-container");
 
+      var start = 0;
+      var move = 0;
+      var distance = 0;
+      var isMove = false;
       wrapper.addEventListener("touchstart", e => {
-        var start = e.touches[0].clientX;
-        wrapper.addEventListener("touchmove", e => {
-          var move = e.touches[0].clientX;
-          var distance = move - start;
-          container.style.transition = "left 0s";
-          container.style.left = distance + "px";
-          wrapper.addEventListener("touchend", e => {
-            if (-distance >= deviceWidth / 3) {
-              // 右滑切换
-              container.style.display = "none";
-              // 改变页面切换效果为fade
-              this.$emit("change-translate", "fade");
-              this.$router.push("/member");
-            } else {
-              container.style.transition = "left 0.1s ease";
-              container.style.left = 0 + "px";
-            }
-            start = move = distance = 0;
-          });
-        });
+        start = e.touches[0].clientX;
+      });
+
+      wrapper.addEventListener("touchmove", e => {
+        isMove = true;
+        move = e.touches[0].clientX;
+        distance = move - start;
+
+        container.style.transition = "left 0s";
+        container.style.left = distance + "px";
+      });
+
+      wrapper.addEventListener("touchend", e => {
+        if (isMove) {
+          if (-distance >= deviceWidth / 3) {
+            container.style.display = "none";
+            this.$emit("change-translate", "fade");
+            this.$router.push("/member");
+          } else {
+            // 弹回去
+            container.style.transition = "left 0.1s ease";
+            container.style.left = 0 + "px";
+            setTimeout(() => {
+              container.style.transition = "all 0.5s ease";
+            }, 100);
+          }
+          isMove = false;
+        }
+        start = move = distance = 0;
       });
     },
     getLunbo() {

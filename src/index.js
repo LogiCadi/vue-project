@@ -56,5 +56,8 @@ Vue.http.options.emulateJSON = true
 const vm = new Vue({
     el: '#app',
     render: c => c(app),
-    router
+    router,
+    methods:{
+        
+    }
 })

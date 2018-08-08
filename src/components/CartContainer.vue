@@ -49,32 +49,44 @@ export default {
       var deviceWidth = document.documentElement.clientWidth;
       var wrapper = document.querySelector(".cart-container");
 
+      var start = 0;
+      var move = 0;
+      var distance = 0;
+      var isMove = false;
       wrapper.addEventListener("touchstart", e => {
-        var start = e.touches[0].clientX;
+        start = e.touches[0].clientX;
+      });
 
-        wrapper.addEventListener("touchmove", e => {
-          var move = e.touches[0].clientX;
-          var distance = move - start;
-          wrapper.style.transition = "left 0s";
-          wrapper.style.left = distance + "px";
+      wrapper.addEventListener("touchmove", e => {
+        isMove = true;
+        move = e.touches[0].clientX;
+        distance = move - start;
 
-          wrapper.addEventListener("touchend", e => {
-            if (distance >= deviceWidth / 3) {
-              wrapper.style.display = "none";
-              this.$emit("change-translate", "fade");
-              this.$router.push("/member");
-            } else if (-distance >= deviceWidth / 3) {
-              wrapper.style.display = "none";
-              this.$emit("change-translate", "fade");
-              this.$router.push("/setting");
-            } else {
-              // 弹回去
-              wrapper.style.transition = "left 0.1s ease";
-              wrapper.style.left = 0 + "px";
-            }
-            start = move = distance = 0;
-          });
-        });
+        wrapper.style.transition = "left 0s";
+        wrapper.style.left = distance + "px";
+      });
+
+      wrapper.addEventListener("touchend", e => {
+        if (isMove) {
+          if (distance >= deviceWidth / 3) {
+            wrapper.style.display = "none";
+            this.$emit("change-translate", "fade");
+            this.$router.push("/member");
+          } else if (-distance >= deviceWidth / 3) {
+            wrapper.style.display = "none";
+            this.$emit("change-translate", "fade");
+            this.$router.push("/setting");
+          } else {
+            // 弹回去
+            wrapper.style.transition = "left 0.1s ease";
+            wrapper.style.left = 0 + "px";
+            setTimeout(() => {
+              wrapper.style.transition = "all 0.5s ease";
+            }, 100);
+          }
+          isMove = false;
+        }
+        start = move = distance = 0;
       });
     }
   }
