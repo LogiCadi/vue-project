@@ -127,10 +127,10 @@ export default {
 
 <style lang="scss" scoped>
 .photo-info {
-  // height: 100vh;
-  // .mui-content-padded {
-  //   margin-bottom: 60px;
-  // }
+  height: 100vh;
+  .mui-content-padded {
+    margin-bottom: 60px;
+  }
   // 头部
   h3 {
     text-align: center;

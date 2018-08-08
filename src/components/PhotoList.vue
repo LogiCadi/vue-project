@@ -47,23 +47,38 @@ export default {
       deceleration: 0.0005, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
       indicators: false //是否显示滚动条
     });
-
-    document.addEventListener("touchmove", function() {
-      var top = Math.abs(
-        document.querySelector(".photo-list-content").getBoundingClientRect()
-          .top - 44
-      );
-      var opVar = top / 300 + 0.1;
-      opVar = opVar > 0.85 ? 0.85 : opVar;
-      document.querySelector(".mui-scroll-wrapper").style.backgroundColor =
-        "rgba(30, 30, 30, " + opVar + ")";
-    });
   },
   created() {
     this.getCategory();
     this.getImgs(0);
+    this.pageScroll();
   },
   methods: {
+    pageScroll() {
+      let _this = this;
+      // 监听滚动距离 设置分类栏的透明度
+      document.addEventListener(
+        "scroll",
+        function() {
+          if (
+            _this.$route.path === "/home/photoList" &&
+            document.querySelector(".photo-list").getBoundingClientRect()
+              .left == 0
+          ) {
+            var top = Math.abs(
+              document.querySelector(".photo-list").getBoundingClientRect().top
+            );
+            var opVar = top / 240 + 0.1;
+            opVar = opVar > 0.85 ? 0.85 : opVar;
+            document.querySelector(
+              ".mui-scroll-wrapper"
+            ).style.backgroundColor =
+              "rgba(0, 0, 0, " + opVar + ")";
+          }
+        },
+        true
+      );
+    },
     getImgs(catId) {
       window.scrollTo(0, 0);
       this.$http.get("getimages/" + catId).then(res => {
@@ -71,6 +86,7 @@ export default {
           this.mui.toast("获取数据失败");
         } else {
           this.imgs = res.body.message;
+
           if (res.body.message.length === 0) {
             this.noImage = true;
           } else {
@@ -100,15 +116,15 @@ export default {
   .mui-scroll-wrapper {
     position: fixed;
     color: #ccc;
-    background-color: #efeff4;
     top: 44px;
-    background-color: rgba(30, 30, 30, 0.1);
+    background-color: rgba(0, 0, 0, 0.1);
     z-index: 99;
+    opacity: 1;
   }
   .mui-scroll-wrapper.noImage {
-    background-color: #efeff4;
     color: #333;
   }
+
   img {
     width: 100%;
     vertical-align: top;

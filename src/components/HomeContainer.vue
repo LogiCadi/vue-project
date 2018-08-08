@@ -86,31 +86,31 @@ export default {
     initSwiper() {
       // 设备宽度
       var deviceWidth = document.documentElement.clientWidth;
+      // 除去轮播图的区域
       var wrapper = document.querySelector(".content");
       var container = document.querySelector(".home-container");
 
-      var start = 0;
-      var distance = 0;
       wrapper.addEventListener("touchstart", e => {
-        start = e.touches[0].clientX;
-      });
-
-      wrapper.addEventListener("touchmove", e => {
-        var move = e.touches[0].clientX;
-        distance = move - start;
-
-        container.style.left = distance + "px";
-      });
-      wrapper.addEventListener("touchend", e => {
-        if (-distance >= deviceWidth / 3) {
-          // 右滑切换
-          container.style.display = "none";
-          this.$emit("change-translate", "right");
-          this.$router.push("/member");
-        } else {
-          container.style.left = 0 + "px";
-        }
-        start = distance = 0;
+        var start = e.touches[0].clientX;
+        wrapper.addEventListener("touchmove", e => {
+          var move = e.touches[0].clientX;
+          var distance = move - start;
+          container.style.transition = "left 0s";
+          container.style.left = distance + "px";
+          wrapper.addEventListener("touchend", e => {
+            if (-distance >= deviceWidth / 3) {
+              // 右滑切换
+              container.style.display = "none";
+              // 改变页面切换效果为fade
+              this.$emit("change-translate", "fade");
+              this.$router.push("/member");
+            } else {
+              container.style.transition = "left 0.1s ease";
+              container.style.left = 0 + "px";
+            }
+            start = move = distance = 0;
+          });
+        });
       });
     },
     getLunbo() {

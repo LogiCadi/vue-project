@@ -29,30 +29,30 @@ export default {
       var deviceWidth = document.documentElement.clientWidth;
       var wrapper = document.querySelector(".member-container");
 
-      var start = 0;
-      var distance = 0;
       wrapper.addEventListener("touchstart", e => {
-        start = e.touches[0].clientX;
-      });
-      wrapper.addEventListener("touchmove", e => {
-        var move = e.touches[0].clientX;
-        distance = move - start;
-
-        wrapper.style.left = distance + "px";
-      });
-      wrapper.addEventListener("touchend", e => {
-        if (distance >= deviceWidth / 3) {
-          wrapper.style.display = "none";
-          this.$emit("change-translate", "left");
-          this.$router.push("/home");
-        } else if (-distance >= deviceWidth / 3) {
-          wrapper.style.display = "none";
-          this.$emit("change-translate", "right");
-          this.$router.push("/cart");
-        } else {
-          wrapper.style.left = 0 + "px";
-        }
-        start = distance = 0;
+        var start = e.touches[0].clientX;
+        wrapper.addEventListener("touchmove", e => {
+          var move = e.touches[0].clientX;
+          var distance = move - start;
+          wrapper.style.transition = "left 0s";
+          wrapper.style.left = distance + "px";
+          wrapper.addEventListener("touchend", e => {
+            if (distance >= deviceWidth / 3) {
+              wrapper.style.display = "none";
+              this.$emit("change-translate", "fade");
+              this.$router.push("/home");
+            } else if (-distance >= deviceWidth / 3) {
+              wrapper.style.display = "none";
+              this.$emit("change-translate", "fade");
+              this.$router.push("/cart");
+            } else {
+              // 弹回去
+              wrapper.style.transition = "left 0.1s ease";
+              wrapper.style.left = 0 + "px";
+            }
+            start = move = distance = 0;
+          });
+        });
       });
     }
   }

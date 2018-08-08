@@ -6,7 +6,7 @@
     </header>
 
     <transition>
-      <router-view @change-translate="changeTranslate" @change-title="changeTitle" :class="['mui-content', direct]"></router-view>
+      <router-view @change-translate="changeTranslate" @change-title="changeTitle" :class="['mui-content', effect]"></router-view>
     </transition>
 
     <nav class="mui-bar mui-bar-tab" v-if="footer">
@@ -48,7 +48,8 @@ export default {
         cart: 1,
         search: 0
       },
-      direct: "right"
+      // 页面切换效果，分为rightSlide 右滑 和 fade淡入
+      effect: "rightSlide"
     };
   },
   provide() {
@@ -62,16 +63,16 @@ export default {
     };
   },
   watch: {
-    direct: function() {
+    effect: function() {
       setTimeout(() => {
-        this.direct = "right";
+        this.effect = "rightSlide";
       }, 500);
     }
   },
   methods: {
     // 改变左右滑动方向
-    changeTranslate(direct) {
-      this.direct = direct;
+    changeTranslate(effect = "rightSlide") {
+      this.effect = effect;
     },
     changeTitle(title) {
       this.title = title;
@@ -98,7 +99,7 @@ export default {
 
 .app-container {
   overflow-x: hidden;
-  height: 100vh;
+  // height: 100vh;
 }
 .mui-content {
   min-height: 100vh;
@@ -112,24 +113,22 @@ export default {
 //   touch-action: none;
 // }
 
-.right.v-enter {
+.rightSlide.v-enter {
   opacity: 0;
   transform: translateX(100%);
 }
 
-.right.v-leave-to {
+.rightSlide.v-leave-to {
   opacity: 0;
   transform: translateX(-100%);
   position: absolute !important;
 }
-.left.v-enter {
-  opacity: 0;
-  transform: translateX(-100%);
-}
 
-.left.v-leave-to {
+.fade.v-enter {
   opacity: 0;
-  transform: translateX(100%);
+}
+.fade.v-leave-to {
+  opacity: 0;
   position: absolute !important;
 }
 
