@@ -4,16 +4,16 @@
             <div class="mui-slider-group mui-slider-loop">
                 <!--支持循环，需要重复图片节点-->
                 <div class="mui-slider-item mui-slider-item-duplicate">
-                    <a href="#"><img :src="list[list.length-1] && list[list.length-1].img" /></a>
+                    <a href="javascript:;"><img :src="list[list.length-1] && list[list.length-1].img" /></a>
                 </div>
 
                 <div v-for="item in list" :key="item.img" class="mui-slider-item">
-                    <a href="#"><img :src="item.img" /></a>
+                    <a href="javascript:;"><img :src="item.img" /></a>
                 </div>
 
                 <!--支持循环，需要重复图片节点-->
                 <div class="mui-slider-item mui-slider-item-duplicate">
-                    <a href="#"><img :src="list[0] && list[0].img" /></a>
+                    <a href="javascript:;"><img :src="list[0] && list[0].img" /></a>
                 </div>
             </div>
 

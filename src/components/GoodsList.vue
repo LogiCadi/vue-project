@@ -108,10 +108,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .goods-list {
-  // height: 100vh;
-  // .content-wrap {
-  //   margin-bottom: 50px;
-  // }
+  height: 100vh;
+  .content-wrap {
+    margin-bottom: 50px;
+  }
 
   ul {
     margin: 0;
