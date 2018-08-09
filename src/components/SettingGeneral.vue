@@ -9,7 +9,7 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 听筒模式
-                <div class="mui-switch mui-switch-mini" data-switch="18">
+                <div class="mui-switch mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
@@ -26,6 +26,9 @@
 export default {
   created() {
     this.$emit("change-title", "通用");
+  },
+  mounted() {
+    this.mui(".mui-switch")["switch"]();
   }
 };
 </script>

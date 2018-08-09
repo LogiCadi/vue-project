@@ -4,7 +4,7 @@
             <li class="mui-table-view-divider">通讯录</li>
             <li class="mui-table-view-cell">
                 加我为朋友时需要验证
-                <div class="mui-switch mui-active mui-switch-mini" data-switch="13">
+                <div class="mui-switch mui-active mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
@@ -12,13 +12,13 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 向我推荐QQ好友
-                <div class="mui-switch mui-switch-mini" data-switch="14">
+                <div class="mui-switch mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 通过QQ号搜索到我
-                <div class="mui-switch mui-switch-mini" data-switch="15">
+                <div class="mui-switch mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
@@ -26,13 +26,13 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 可通过手机号搜索到我
-                <div class="mui-switch mui-active mui-switch-mini" data-switch="16">
+                <div class="mui-switch mui-active mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 向我推荐通讯录朋友
-                <div class="mui-switch mui-switch-mini" data-switch="17">
+                <div class="mui-switch mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
@@ -41,7 +41,7 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 通过HBuilder账号搜索到我
-                <div class="mui-switch mui-active mui-switch-mini" data-switch="18">
+                <div class="mui-switch mui-active mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
@@ -59,7 +59,8 @@ export default {
     this.mui.init({
       swipeBack: true //启用右滑关闭功能
     });
-   
+
+    this.mui(".mui-switch")["switch"]();
   }
 };
 </script>

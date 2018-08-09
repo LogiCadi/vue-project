@@ -1,5 +1,5 @@
 <template>
-  <div class="goods-list">
+  <div class="goods-info">
     <div class="mui-card">
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
@@ -105,7 +105,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.goods-list {
+.goods-info {
   .mui-card {
     margin-top: 10px !important;
 
@@ -131,7 +131,7 @@ export default {
       }
     }
     .desc-content {
-      img {
+      img  {
         width: 100%;
       }
     }

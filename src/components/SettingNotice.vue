@@ -11,7 +11,7 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 通知显示消息详情
-                <div class="mui-switch mui-active mui-switch-mini" data-switch="10">
+                <div class="mui-switch mui-active mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
@@ -38,13 +38,13 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
                 声音
-                <div class="mui-switch mui-active mui-switch-mini" data-switch="11">
+                <div class="mui-switch mui-active mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
             <li class="mui-table-view-cell">
                 震动
-                <div class="mui-switch mui-active mui-switch-mini" data-switch="12">
+                <div class="mui-switch mui-active mui-switch-mini">
                     <div class="mui-switch-handle"></div>
                 </div>
             </li>
@@ -59,6 +59,9 @@
 export default {
   created() {
     this.$emit("change-title", "新消息通知");
+  },
+  mounted() {
+    this.mui(".mui-switch")["switch"]();
   }
 };
 </script>
