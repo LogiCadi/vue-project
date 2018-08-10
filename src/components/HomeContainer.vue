@@ -25,10 +25,10 @@
           </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <a href="#">
+          <router-link to="/home/chartroom">
             <span class="mui-icon mui-icon-chatboxes"></span>
-            <div class="mui-media-body">留言反馈</div>
-          </a>
+            <div class="mui-media-body">开心聊吧</div>
+          </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4">
           <a href="#" @tap="mui.alert('未开放')">
@@ -165,6 +165,9 @@ export default {
   }
   .content {
     min-height: 216px;
+    .mui-icon {
+      color: rgb(101, 185, 212);
+    }
   }
 }
 </style>

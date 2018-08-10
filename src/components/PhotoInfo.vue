@@ -188,6 +188,7 @@ export default {
 }
 .allLoaded {
   text-align: center;
+  margin-bottom: 50px;
   line-height: 50px;
 }
 </style>
