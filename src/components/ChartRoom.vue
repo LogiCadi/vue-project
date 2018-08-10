@@ -62,7 +62,7 @@ export default {
         window.scrollTo(0, document.documentElement.scrollHeight);
       });
 
-      this.$http.post("http://localhost:3000/send", newSend).then(res => {
+      this.$http.post("http://luokai.frpzj.kskxs.com:8081/send", newSend).then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("请求失败");
           console.error(res.body.message);
@@ -71,7 +71,7 @@ export default {
     },
     // 获取聊天数据
     getCharts(scroll) {
-      this.$http.get("http://localhost:3000/getCharts").then(res => {
+      this.$http.get("http://luokai.frpzj.kskxs.com:8081/getCharts").then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("请求失败");
           console.error(res.body.message);
