@@ -60,6 +60,7 @@ export default {
     };
   },
   mounted() {
+    window.scrollTo(0, 0);
     this.$emit("change-title", "商品列表");
     this.getList(isNodata => {
       if (isNodata) {
@@ -75,6 +76,7 @@ export default {
           this.mui.toast("请求失败");
         } else {
           this.list = this.list.concat(res.body.message);
+          
           if (res.body.message.length < 10) {
             // 没有数据了
             callback && callback(true);
@@ -110,7 +112,7 @@ export default {
 .goods-list {
   height: 100vh;
   .content-wrap {
-    margin-bottom: 50px;
+    padding-bottom: 50px;
   }
 
   ul {

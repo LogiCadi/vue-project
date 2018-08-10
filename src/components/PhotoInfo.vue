@@ -63,6 +63,7 @@ export default {
   },
   inject: ["defaultImg"],
   mounted() {
+    window.scrollTo(0, 0);
     this.$emit("change-title", "图片详情");
 
     this.$refs.comment.getComments(isNodata => {
@@ -101,13 +102,16 @@ export default {
         });
       }, 1500);
     },
-    // ajax获取图片数据
+    // ajax获取图片详情数据
     getPhotoInfo() {
       this.$http.get("getimageinfo/" + this.$route.params.id).then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("获取数据失败");
+          console.error(res.body.message);
         } else {
           this.info = res.body.message[0];
+
+         
         }
       });
     },
@@ -116,8 +120,11 @@ export default {
       this.$http.get("getthumimages/" + this.$route.params.id).then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("获取数据失败");
+          console.error(res.body.message);
         } else {
           this.$previewRefresh();
+
+         
         }
       });
     }

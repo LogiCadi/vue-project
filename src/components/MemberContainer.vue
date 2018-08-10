@@ -3,11 +3,20 @@
   <div class="member-container">
 
     <div class="mui-card">
+      <div class="mui-card-header mui-card-media" ref="header">
+
+      </div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          MemberContainer
+          <p>
+            <a href="https://logicadi.gitee.io/web">@luokai</a> 发表于：1970-1-1 08:00</p>
+          <p style="color: #333;">
+            使用的是Vue.js + MUI做的
+            <a href='https://baike.baidu.com/item/SPA/17536313?fr=aladdin'>单页面web</a>。
+          </p>
         </div>
       </div>
+
     </div>
 
   </div>
@@ -18,10 +27,16 @@ export default {
   data() {
     return {};
   },
+  inject: ["changeBadge"],
   mounted() {
+    window.scrollTo(0, 0);
     this.$emit("change-title", "会员中心");
     // 左右滑动切换页面
     this.initSwiper();
+    this.$refs.header.style.backgroundImage =
+      "url(" + require("../image/milkyway4.jpg") + ")";
+    // 消除footer中的徽章个数
+    this.changeBadge("about", 0);
   },
   methods: {
     initSwiper() {
@@ -74,5 +89,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.mui-card-media {
+  height: 40vw;
+  background-size: cover;
+}
 </style>
 

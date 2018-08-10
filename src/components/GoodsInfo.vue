@@ -20,16 +20,16 @@
           </div>
           <div class="mui-card-content-inner-number">购买数量：
 
-            <div class="mui-numbox" data-numbox-min="1" data-numbox-max="9">
+            <div class="mui-numbox" data-numbox-min="1">
               <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-              <input id="test" class="mui-input-numbox" type="number" value="1">
+              <input id="test" class="mui-input-numbox" type="number" ref="num" value="1">
               <button class="mui-btn mui-btn-numbox-plus" type="button" disabled="">+</button>
             </div>
 
             &nbsp;&nbsp;&nbsp;&nbsp; 库存：{{ goodsInfo.stock_quantity }}
           </div>
           <div class="mui-card-content-inner-btn">
-            <span class="mui-btn mui-btn-danger">立即购买</span>
+            <span class="mui-btn mui-btn-danger" @tap="mui.alert('未开放')">立即购买</span>
             <span class="mui-btn mui-btn-primary" @tap="addCart">加入购物车</span>
           </div>
         </div>
@@ -62,6 +62,7 @@ export default {
     };
   },
   mounted() {
+    window.scrollTo(0, 0);
     this.$emit("change-title", "商品详情");
 
     // 初始化数字输入框
@@ -76,6 +77,13 @@ export default {
     // 加入购物车
     addCart() {
       this.mui.alert("加入购物车成功！");
+
+      // 将商品的id和购买数量添加到store中的cart
+      const buyGoods = {
+        id: this.id,
+        num: parseInt(this.$refs.num.value)
+      };
+      this.$store.commit("addCart", buyGoods);
     },
     // ajax商品详情
     getDesc() {
@@ -106,6 +114,10 @@ export default {
 </script>
 <style lang="scss">
 .goods-info {
+  // height: 100vh;
+  // .mui-card:last-of-type {
+  //   margin-bottom: 60px;
+  // }
   .mui-card {
     margin-top: 10px !important;
 
@@ -131,8 +143,9 @@ export default {
       }
     }
     .desc-content {
-      img  {
+      img {
         width: 100%;
+        height: auto;
       }
     }
   }

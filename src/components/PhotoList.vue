@@ -41,6 +41,7 @@ export default {
   },
   inject: ["defaultImg"],
   mounted() {
+    window.scrollTo(0, 0);
     this.$emit("change-title", "图片分享");
 
     this.mui(".mui-scroll-wrapper").scroll({
@@ -80,12 +81,16 @@ export default {
       );
     },
     getImgs(catId) {
-      window.scrollTo(0, 0);
       this.$http.get("getimages/" + catId).then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("获取数据失败");
+          console.error(res.body.message);
         } else {
           this.imgs = res.body.message;
+
+          this.$nextTick(() => {
+            window.scrollTo(0, 0);
+          });
 
           if (res.body.message.length === 0) {
             this.noImage = true;
@@ -102,9 +107,14 @@ export default {
       this.$http.get("getimgcategory").then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("获取数据失败");
+          console.error(res.body.message);
         } else {
           this.imgCategory = res.body.message;
           this.imgCategory.unshift({ title: "全部", id: 0 });
+
+          this.$nextTick(() => {
+            window.scrollTo(0, 0);
+          });
         }
       });
     }

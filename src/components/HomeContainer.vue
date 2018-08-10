@@ -31,13 +31,13 @@
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <a href="#">
+          <a href="#" @tap="mui.alert('未开放')">
             <span class="mui-icon mui-icon-videocam"></span>
             <div class="mui-media-body">视频专区</div>
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <a href="#">
+          <a href="#" @tap="mui.alert('未开放')">
             <span class="mui-icon mui-icon-email"></span>
             <div class="mui-media-body">联系我们</div>
           </a>
@@ -140,6 +140,7 @@ export default {
     imageSwipe
   },
   mounted() {
+    window.scrollTo(0, 0);
     // this.getLunbo();
     this.$emit("change-title", "首页");
     //获得slider插件对象
@@ -155,11 +156,15 @@ export default {
 
 <style lang="scss" scoped>
 .home-container {
+  // height: 100vh;
   .mui-table-view {
     background-color: #efeff4;
   }
   .mui-media-body {
     font-size: 13px !important;
+  }
+  .content {
+    min-height: 216px;
   }
 }
 </style>

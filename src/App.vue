@@ -15,8 +15,10 @@
         <span class="mui-tab-label">首页</span>
       </router-link>
       <router-link class="mui-tab-item" to="/member">
-        <span class="mui-icon mui-icon-contact"></span>
-        <span class="mui-tab-label">会员</span>
+        <span class="mui-icon mui-icon-star">
+          <span class="mui-badge" v-show="badge.about != 0">{{ badge.about }}</span>
+        </span>
+        <span class="mui-tab-label">关于</span>
       </router-link>
       <router-link class="mui-tab-item" to="/cart">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
@@ -45,7 +47,8 @@ export default {
       footer: true,
       // 控制footer中的徽章显示
       badge: {
-        cart: 1,
+        about: 1,
+        cart: 0,
         search: 0
       },
       // 页面切换效果，分为rightSlide 右滑 和 fade淡入

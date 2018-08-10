@@ -30,6 +30,7 @@ export default {
   },
   inject: ["defaultImg"],
   mounted() {
+    window.scrollTo(0, 0);
     this.$emit("change-title", "新闻列表");
   },
   created() {
@@ -39,9 +40,14 @@ export default {
     getList() {
       this.$http.get("getnewslist").then(res => {
         if (res.body.status !== 0) {
-          throw "列表获取失败";
+          this.mui.toast("获取数据失败");
+          console.error(res.body.message);
         } else {
           this.list = res.body.message;
+
+          this.$nextTick(() => {
+            window.scrollTo(0, 0);
+          });
         }
       });
     }

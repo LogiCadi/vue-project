@@ -53,12 +53,8 @@ export default {
   },
 
   mounted() {
+    window.scrollTo(0, 0);
     this.$emit("change-title", "新闻详情");
-
-    this.mui(".mui-scroll-wrapper").scroll({
-      deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
-      // indicators: false //是否显示滚动条
-    });
 
     // 初次获取评论数据
     this.$refs.comment.getComments(isNodata => {
@@ -91,7 +87,8 @@ export default {
     getInfo() {
       this.$http.get("getnew/" + this.id).then(res => {
         if (res.body.status !== 0) {
-          this.mui.toast("请求失败");
+          this.mui.toast("获取数据失败");
+          console.error(res.body.message);
         } else {
           this.newsInfo = res.body.message[0];
         }
