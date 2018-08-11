@@ -49,12 +49,14 @@ export default {
   },
   methods: {
     inputScroll() {
-      document.querySelector("#inp").addEventListener("focus", () => {
+      window.addEventListener("resize", () => {
         document.body.style.height = "9999px";
-        var inputBox = document.querySelector(".input-box")
-        inputBox.style.position = "absolute"
-        
-        inputBox.scrollIntoView();
+        // var inputBox = document.querySelector(".input-box");
+        inputBox.style.position = "absolute";
+
+        // inputBox.scrollIntoView();
+
+        document.documentElement.scrollTop += 300;
       });
     },
     // 发送消息
