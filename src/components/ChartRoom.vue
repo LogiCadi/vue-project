@@ -49,17 +49,19 @@ export default {
   },
   methods: {
     inputScroll() {
-      window.addEventListener("resize", () => {
+      document.querySelector("#inp").addEventListener("focus", () => {
+        document.querySelector(".chartroom").style.transform =
+          "translateY(-250px)";
+        setTimeout(() => {
+          window.scrollTo(0, document.documentElement.scrollHeight);
+        }, 100);
+      });
+      document.querySelector("#inp").addEventListener("blur", e => {
+        document.querySelector(".chartroom").style.transform = "translateY(0)";
 
-        alert('resize')
-        
-        // document.body.style.height = "9999px";
-        // var inputBox = document.querySelector(".input-box");
-        // inputBox.style.position = "absolute";
-
-        // // inputBox.scrollIntoView();
-
-        // document.documentElement.scrollTop += 300;
+        setTimeout(() => {
+          window.scrollTo(0, document.documentElement.scrollHeight);
+        }, 100);
       });
     },
     // 发送消息
@@ -135,6 +137,7 @@ export default {
 </script>
 <style  lang="scss" scoped>
 .chartroom {
+  transition: all 0.5s ease;
   .chartroom-content {
     margin-bottom: 60px;
     ul {
