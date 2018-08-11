@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json())
 
-// 静态资源
+// 处理静态资源
 app.use(express.static(path.join(__dirname, 'vue-case')))
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
 app.use('/', express.static(path.join(__dirname, 'dist')))

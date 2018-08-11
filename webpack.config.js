@@ -33,7 +33,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 4096,
-                            name: '[hash:8]_[name].[ext]'
+                            name: '[name].[ext]'
                         }
                     },
                     //图片压缩,

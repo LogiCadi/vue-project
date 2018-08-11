@@ -30,7 +30,7 @@
 
         <ul class="mui-table-view mui-table-view-chevron">
             <li class="mui-table-view-cell">
-                <router-link to="/setting/about" class="mui-navigate-right">关于Demo
+                <router-link to="/setting/about" class="mui-navigate-right">关于
                     <i class="mui-pull-right update">V0.0.8</i>
                 </router-link>
             </li>

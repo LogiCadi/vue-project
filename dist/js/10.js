@@ -100,7 +100,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"1be6adc0_milkyway6.jpg\";\n\n//# sourceURL=webpack:///./src/image/milkyway6.jpg?");
+eval("module.exports = __webpack_require__.p + \"milkyway6.jpg\";\n\n//# sourceURL=webpack:///./src/image/milkyway6.jpg?");
 
 /***/ })
 

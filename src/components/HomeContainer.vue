@@ -166,7 +166,7 @@ export default {
   .content {
     min-height: 216px;
     .mui-icon {
-      color: rgb(101, 185, 212);
+      color: rgb(157, 195, 207);
     }
   }
 }

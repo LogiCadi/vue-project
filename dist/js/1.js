@@ -100,7 +100,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"99f0421a_milkyway3.jpg\";\n\n//# sourceURL=webpack:///./src/image/milkyway3.jpg?");
+eval("module.exports = __webpack_require__.p + \"milkyway3.jpg\";\n\n//# sourceURL=webpack:///./src/image/milkyway3.jpg?");
 
 /***/ }),
 
@@ -111,7 +111,7 @@ eval("module.exports = __webpack_require__.p + \"99f0421a_milkyway3.jpg\";\n\n//
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"da849658_milkyway4.jpg\";\n\n//# sourceURL=webpack:///./src/image/milkyway4.jpg?");
+eval("module.exports = __webpack_require__.p + \"milkyway4.jpg\";\n\n//# sourceURL=webpack:///./src/image/milkyway4.jpg?");
 
 /***/ })
 

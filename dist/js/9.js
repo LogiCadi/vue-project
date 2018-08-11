@@ -193,7 +193,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"49ff38ec_iteminfo1.jpg\";\n\n//# sourceURL=webpack:///./src/image/iteminfo1.jpg?");
+eval("module.exports = __webpack_require__.p + \"iteminfo1.jpg\";\n\n//# sourceURL=webpack:///./src/image/iteminfo1.jpg?");
 
 /***/ }),
 
@@ -204,7 +204,7 @@ eval("module.exports = __webpack_require__.p + \"49ff38ec_iteminfo1.jpg\";\n\n//
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"3e737922_iteminfo2.jpg\";\n\n//# sourceURL=webpack:///./src/image/iteminfo2.jpg?");
+eval("module.exports = __webpack_require__.p + \"iteminfo2.jpg\";\n\n//# sourceURL=webpack:///./src/image/iteminfo2.jpg?");
 
 /***/ }),
 
@@ -215,7 +215,7 @@ eval("module.exports = __webpack_require__.p + \"3e737922_iteminfo2.jpg\";\n\n//
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"8ff46dfb_iteminfo3.jpg\";\n\n//# sourceURL=webpack:///./src/image/iteminfo3.jpg?");
+eval("module.exports = __webpack_require__.p + \"iteminfo3.jpg\";\n\n//# sourceURL=webpack:///./src/image/iteminfo3.jpg?");
 
 /***/ })
 

@@ -100,7 +100,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"7ef83d0a_item.jpg\";\n\n//# sourceURL=webpack:///./src/image/item.jpg?");
+eval("module.exports = __webpack_require__.p + \"item.jpg\";\n\n//# sourceURL=webpack:///./src/image/item.jpg?");
 
 /***/ }),
 
@@ -111,7 +111,7 @@ eval("module.exports = __webpack_require__.p + \"7ef83d0a_item.jpg\";\n\n//# sou
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"0fef02b8_item2.jpg\";\n\n//# sourceURL=webpack:///./src/image/item2.jpg?");
+eval("module.exports = __webpack_require__.p + \"item2.jpg\";\n\n//# sourceURL=webpack:///./src/image/item2.jpg?");
 
 /***/ })
 

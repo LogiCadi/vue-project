@@ -2885,7 +2885,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _nod
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"ae87db52_default.jpg\";\n\n//# sourceURL=webpack:///./src/image/default.jpg?");
+eval("module.exports = __webpack_require__.p + \"default.jpg\";\n\n//# sourceURL=webpack:///./src/image/default.jpg?");
 
 /***/ }),
 
