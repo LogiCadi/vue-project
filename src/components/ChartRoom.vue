@@ -51,8 +51,10 @@ export default {
     inputScroll() {
       document.querySelector("#inp").addEventListener("focus", () => {
         document.body.style.height = "9999px";
-
-        document.querySelector(".input-box").scrollIntoView(false);
+        var inputBox = document.querySelector(".input-box")
+        inputBox.style.position = "absolute"
+        
+        inputBox.scrollIntoView(false);
       });
     },
     // 发送消息
