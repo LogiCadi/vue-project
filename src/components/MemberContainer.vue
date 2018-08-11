@@ -3,20 +3,31 @@
   <div class="member-container">
 
     <div class="mui-card">
-      <div class="mui-card-header mui-card-media" ref="header">
-
-      </div>
+      <div class="mui-card-header mui-card-media" :style="{ backgroundImage: `url(${ require('../image/milkyway4.jpg') })` }"></div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
           <p>
             <a href="https://logicadi.gitee.io/web">@luokai</a> 发表于：1970-1-1 08:00</p>
-          <p style="color: #333;">
+          <p class="text">
             使用的是Vue.js + MUI做的
             <a href='https://baike.baidu.com/item/SPA/17536313?fr=aladdin'>单页面web</a>。
           </p>
         </div>
       </div>
+    </div>
 
+    <div class="mui-card">
+      <div class="mui-card-header mui-card-media" :style="{ backgroundImage: `url(${ require('../image/milkyway3.jpg') })` }"></div>
+      <div class="mui-card-content">
+        <div class="mui-card-content-inner">
+          <p>
+            <a href="https://logicadi.gitee.io/web">@luokai</a> 发表于：1970-1-1 08:00</p>
+          <p class="text">
+        
+           发现生命中的美好，保持一颗积极乐观的心，努力追逐属于自己的幸福。
+          </p>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -30,11 +41,11 @@ export default {
   inject: ["changeBadge"],
   mounted() {
     window.scrollTo(0, 0);
-    this.$emit("change-title", "会员中心");
+    // this.$emit("change-title", "会员中心");
+    this.$emit("change-title", "关于");
     // 左右滑动切换页面
     this.initSwiper();
-    this.$refs.header.style.backgroundImage =
-      "url(" + require("../image/milkyway4.jpg") + ")";
+
     // 消除footer中的徽章个数
     this.changeBadge("about", 0);
   },
@@ -92,6 +103,11 @@ export default {
 .mui-card-media {
   height: 40vw;
   background-size: cover;
+}
+.text {
+  color: #333;
+  font-size: 16px;
+  text-indent: 1em;
 }
 </style>
 
