@@ -22,8 +22,8 @@
   </div>
 </template>
 <script>
-const url = "http://localhost:3000/";
-// const url = "http://luokai.frpzj.kskxs.com:8081/";
+// const url = "http://localhost:3000/";
+const url = "http://luokai.frpzj.kskxs.com:8081/";
 export default {
   data() {
     return {
@@ -54,7 +54,7 @@ export default {
         var inputBox = document.querySelector(".input-box")
         inputBox.style.position = "absolute"
         
-        inputBox.scrollIntoView(false);
+        inputBox.scrollIntoView();
       });
     },
     // 发送消息
