@@ -12,13 +12,13 @@
       </ul>
     </div>
     <!-- 底部输入 -->
-    <div class="input-box">
+    <footer class="input-box">
 
       <button @tap="setName">{{ name }}</button>
 
       <input id="inp" type="text" ref="text">
       <button class="submit" @tap="send">发送</button>
-    </div>
+    </footer>
   </div>
 </template>
 <script>
@@ -49,9 +49,10 @@ export default {
   },
   methods: {
     inputScroll() {
-      document.querySelector("#input").addEventListener("foucs", () => {
-        document.querySelector(".input-box").style.position = "static"
-        document.querySelector(".input-box").scrollIntoViewIfNeeded();
+      document.querySelector("#inp").addEventListener("focus", () => {
+        document.body.style.height = "9999px";
+
+        document.querySelector(".input-box").scrollIntoView(false);
       });
     },
     // 发送消息
