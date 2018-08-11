@@ -50,13 +50,16 @@ export default {
   methods: {
     inputScroll() {
       window.addEventListener("resize", () => {
-        document.body.style.height = "9999px";
+
+        alert('resize')
+        
+        // document.body.style.height = "9999px";
         // var inputBox = document.querySelector(".input-box");
-        inputBox.style.position = "absolute";
+        // inputBox.style.position = "absolute";
 
-        // inputBox.scrollIntoView();
+        // // inputBox.scrollIntoView();
 
-        document.documentElement.scrollTop += 300;
+        // document.documentElement.scrollTop += 300;
       });
     },
     // 发送消息
