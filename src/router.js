@@ -83,6 +83,10 @@ const router = new VueRouter({
         {
             path: '/home/chartroom',
             component: resolve => require(['./components/ChartRoom.vue'], resolve)
+        },
+        {
+            path: '/test',
+            component: resolve => require(['./components/test.vue'], resolve)
         }
 
     ],

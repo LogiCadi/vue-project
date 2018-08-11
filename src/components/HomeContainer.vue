@@ -37,10 +37,10 @@
           </a>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4">
-          <a href="#" @tap="mui.alert('未开放')">
+          <router-link to="/test">
             <span class="mui-icon mui-icon-email"></span>
             <div class="mui-media-body">联系我们</div>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>

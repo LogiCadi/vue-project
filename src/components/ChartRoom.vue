@@ -1,27 +1,29 @@
 <template>
-    <div class="chartroom">
+  <div class="chartroom">
 
-        <div class="chartroom-content">
+    <div class="chartroom-content">
 
-            <ul>
-                <li :class="{'left' : item.my}" v-for="item in list" :key="item.id">
-                    <div class="name">{{ item.fname }}</div>
-                    <div class="said">
-                        <i class="jian"></i>{{ item.say }}</div>
-                </li>
-            </ul>
-        </div>
-        <!-- 底部输入 -->
-        <div class="input-box">
-
-            <button @tap="setName">{{ name }}</button>
-
-            <input type="text" ref="text">
-            <button class="submit" @tap="send">发送</button>
-        </div>
+      <ul>
+        <li :class="{'left' : item.my}" v-for="item in list" :key="item.id">
+          <div class="name">{{ item.fname }}</div>
+          <div class="said">
+            <i class="jian"></i>{{ item.say }}</div>
+        </li>
+      </ul>
     </div>
+    <!-- 底部输入 -->
+    <div class="input-box">
+
+      <button @tap="setName">{{ name }}</button>
+
+      <input type="text" ref="text">
+      <button class="submit" @tap="send">发送</button>
+    </div>
+  </div>
 </template>
 <script>
+const url = "http://localhost:3000/";
+// const url = "http://luokai.frpzj.kskxs.com:8081/";
 export default {
   data() {
     return {
@@ -32,11 +34,21 @@ export default {
   },
   created() {
     this.$emit("change-title", "聊天室");
-    this.getCharts(true);
+    this.getCharts();
 
     this.timeId = setInterval(() => {
       this.getCharts();
-    }, 2000);
+    }, 3000);
+  },
+  mounted() {
+    console.log(document.documentElement.scrollHeight);
+    let interval = setInterval(function() {
+      console.log(document.body.scrollTop);
+      console.log(document.body.scrollHeight);
+      
+      
+      document.body.scrollTop = document.body.scrollHeight;
+    }, 100);
   },
   beforeDestroy() {
     // 离开前关闭定时器
@@ -62,7 +74,7 @@ export default {
         window.scrollTo(0, document.documentElement.scrollHeight);
       });
 
-      this.$http.post("http://luokai.frpzj.kskxs.com:8081/send", newSend).then(res => {
+      this.$http.post(url + "send", newSend).then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("请求失败");
           console.error(res.body.message);
@@ -70,30 +82,32 @@ export default {
       });
     },
     // 获取聊天数据
-    getCharts(scroll) {
-      this.$http.get("http://luokai.frpzj.kskxs.com:8081/getCharts").then(res => {
+    getCharts() {
+      this.$http.get(url + "getCharts").then(res => {
         if (res.body.status !== 0) {
           this.mui.toast("请求失败");
           console.error(res.body.message);
         } else {
-          this.list = res.body.message;
+          if (this.list.length != res.body.message.length) {
+            // 有新数据
+            res.body.message.forEach(item => {
+              // 获得name第一个个字符
+              item.fname = item.name.slice(0, 1);
 
-          this.list.forEach(item => {
-            // 获得name第一个个字符
-            item.fname = item.name.slice(0, 1);
+              // 判断是不是本人
+              if (item.name == this.name) {
+                item.my = true;
+              } else {
+                item.my = false;
+              }
+            });
 
-            // 判断是不是本人
-            if (item.name == this.name) {
-              item.my = true;
-            } else {
-              item.my = false;
-            }
-            if (scroll) {
-              this.$nextTick(() => {
-                window.scrollTo(0, document.documentElement.scrollHeight);
-              });
-            }
-          });
+            this.list = res.body.message;
+
+            this.$nextTick(() => {
+              window.scrollTo(0, document.documentElement.scrollHeight);
+            });
+          }
         }
       });
     },

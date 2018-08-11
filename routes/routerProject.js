@@ -41,8 +41,26 @@ router.post('/send', function (req, res) {
         res.json(data)
 
     })
+})
 
+router.get('/getNewChart/:id', function (req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
+    dao.getNewChart([req.params.id], function (err, data) {
+        if (err) {
+            console.error(err);
+            res.status(500).send('server error!')
+            return
+        }
+
+        data = {
+            status: 0,
+            message: data
+        }
+        // res.send(`${callback}(${JSON.stringify(data)})`)
+        res.json(data)
+
+    })
 })
 
 

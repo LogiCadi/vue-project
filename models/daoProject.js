@@ -30,5 +30,16 @@ exports.addSay = function (arr, callback) {
         callback(null, data)
     });
 }
+// 获取最新消息
+exports.getNewChart = function (arr, callback) {
+    connection.query('select * from chartroom where id > ?', arr, function (err, data) {
+        //查询后执行回调函数
+        if (err) {
+            callback(err)
+            return
+        }
+        callback(null, data)
+    });
+}
 
 //connection.end()
