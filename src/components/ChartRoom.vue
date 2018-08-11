@@ -42,13 +42,11 @@ export default {
   },
   mounted() {
     console.log(document.documentElement.scrollHeight);
-    let interval = setInterval(function() {
-      console.log(document.body.scrollTop);
-      console.log(document.body.scrollHeight);
-      
-      
-      document.body.scrollTop = document.body.scrollHeight;
-    }, 100);
+    let interval = setInterval(() => {
+      alert(document.documentElement.clientHeight);
+
+     
+    }, 1000);
   },
   beforeDestroy() {
     // 离开前关闭定时器
