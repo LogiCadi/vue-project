@@ -16,7 +16,7 @@
 
       <button @tap="setName">{{ name }}</button>
 
-      <input type="text" ref="text">
+      <input id="inp" type="text" ref="text">
       <button class="submit" @tap="send">发送</button>
     </div>
   </div>
@@ -41,18 +41,42 @@ export default {
     }, 3000);
   },
   mounted() {
-    console.log(document.documentElement.scrollHeight);
-    let interval = setInterval(() => {
-      alert(document.documentElement.clientHeight);
-
-     
-    }, 1000);
+    this.inputScroll();
   },
   beforeDestroy() {
     // 离开前关闭定时器
     clearInterval(this.timeId);
   },
   methods: {
+    inputScroll() {
+      var inp = document.querySelector("#inp");
+      var inpBox = document.querySelector(".input-box");
+      var bodyHeight = document.body.offsetHeight;
+      inp.onclick = function(ev) {
+        document.querySelector("body").style.height = "99999px";
+        inpBox.style.position = "static";
+        setTimeout(function() {
+          document.body.scrollTop = document.documentElement.scrollTop =
+            inpBox.getBoundingClientRect().top + pageYOffset - 5;
+        }, 50);
+        window.addEventListener("touchmove", fn, false);
+      };
+
+      inp.onblur = function() {
+        document.querySelector("body").style.height = "auto";
+        document.querySelector("body").removeAttribute("style");
+        window.removeEventListener("touchmove", fn, false);
+        inpBox.style.position = "fixed";
+      };
+      //触摸取消blur
+      function fn(ev) {
+        var _target = ev.target || ev.srcElement;
+        if (_target.nodeName != "INPUT") {
+          inp.blur();
+        }
+        ev.preventDefault();
+      }
+    },
     // 发送消息
     send() {
       // 先更新data中的数据，再持久化到数据库
