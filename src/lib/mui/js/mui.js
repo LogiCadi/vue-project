@@ -1043,7 +1043,8 @@ Function.prototype.bind = Function.prototype.bind || function (to) {
 		if (!$.os.ios) {
 			return;
 		}
-		var CLASS_FOCUSIN = 'mui-focusin';
+		// var CLASS_FOCUSIN = 'mui-focusin';
+		var CLASS_FOCUSIN = 'fuck mui';
 		var CLASS_BAR_TAB = 'mui-bar-tab';
 		var CLASS_BAR_FOOTER = 'mui-bar-footer';
 		var CLASS_BAR_FOOTER_SECONDARY = 'mui-bar-footer-secondary';
@@ -7792,7 +7793,8 @@ Function.prototype.bind = Function.prototype.bind || function (to) {
 	var CLASS_PLACEHOLDER = 'mui-placeholder';
 	var CLASS_TOOLTIP = 'mui-tooltip';
 	var CLASS_HIDDEN = 'mui-hidden';
-	var CLASS_FOCUSIN = 'mui-focusin';
+	// var CLASS_FOCUSIN = 'mui-focusin';
+	var CLASS_FOCUSIN = 'fuck mui';
 	var SELECTOR_ICON_CLOSE = '.' + CLASS_ICON_CLEAR;
 	var SELECTOR_ICON_SPEECH = '.' + CLASS_ICON_SPEECH;
 	var SELECTOR_ICON_PASSWORD = '.' + CLASS_ICON_PASSWORD;

@@ -12,13 +12,16 @@
       </ul>
     </div>
     <!-- 底部输入 -->
+
     <footer class="input-box">
 
       <button @tap="setName">{{ name }}</button>
+      <input class="" id="inp" type="text" ref="text">
 
-      <input id="inp" type="text" ref="text">
       <button class="submit" @tap="send">发送</button>
+
     </footer>
+
   </div>
 </template>
 <script>
@@ -35,33 +38,32 @@ export default {
   created() {
     this.$emit("change-title", "聊天室");
     this.getCharts();
-
+    this.mui(".mui-input-row input").input();
     this.timeId = setInterval(() => {
       this.getCharts();
     }, 3000);
-  },
-  mounted() {
-    this.inputScroll();
   },
   beforeDestroy() {
     // 离开前关闭定时器
     clearInterval(this.timeId);
   },
+  mounted() {
+    this.inputScroll();
+  },
   methods: {
     inputScroll() {
-      document.querySelector("#inp").addEventListener("focus", () => {
-        document.querySelector(".chartroom").style.transform =
-          "translateY(-250px)";
-        setTimeout(() => {
-          window.scrollTo(0, document.documentElement.scrollHeight);
-        }, 100);
-      });
-      document.querySelector("#inp").addEventListener("blur", e => {
-        document.querySelector(".chartroom").style.transform = "translateY(0)";
 
-        setTimeout(() => {
-          window.scrollTo(0, document.documentElement.scrollHeight);
-        }, 100);
+      var chartroom = document.querySelector(".chartroom-content");
+      var inputBox = document.querySelector(".input-box");
+      inputBox.style.transition = "all 0.5s ease";
+      document.querySelector("#inp").addEventListener("focus", () => {
+        inputBox.style.bottom = "300px";
+        chartroom.style.bottom = "250px";
+      });
+
+      document.querySelector("#inp").addEventListener("blur", e => {
+        inputBox.style.bottom = "50px";
+        chartroom.style.bottom = "0";
       });
     },
     // 发送消息
@@ -124,9 +126,11 @@ export default {
     setName() {
       if (this.name == "匿名") {
         this.mui.prompt("请输入你的昵称", e => {
-          this.name = e.value;
-          // 持久化到本地
-          localStorage.setItem("localName", e.value);
+          if (e.index == 1 && e.value.trim()) {
+            this.name = e.value.trim();
+            // 持久化到本地
+            localStorage.setItem("localName", e.value);
+          }
         });
       } else {
         this.mui.toast("二次改名请充钱");
@@ -137,9 +141,11 @@ export default {
 </script>
 <style  lang="scss" scoped>
 .chartroom {
-  transition: all 0.5s ease;
   .chartroom-content {
+    position: relative;
     margin-bottom: 60px;
+    transition: all 0.5s ease;
+    bottom: 0;
     ul {
       padding: 0;
       margin: 0;
