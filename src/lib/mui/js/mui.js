@@ -1067,7 +1067,7 @@ Function.prototype.bind = Function.prototype.bind || function (to) {
 				if (target.disabled || target.readOnly) {
 					return;
 				}
-				document.body.classList.add(CLASS_FOCUSIN);
+				// document.body.classList.add(CLASS_FOCUSIN);
 				var isFooter = false;
 				for (; target && target !== document; target = target.parentNode) {
 					var classList = target.classList;
@@ -7979,7 +7979,7 @@ Function.prototype.bind = Function.prototype.bind || function (to) {
 			var self = this;
 			var oldValue = self.element.value;
 			self.element.value = '';
-			document.body.classList.add(CLASS_FOCUSIN);
+			// document.body.classList.add(CLASS_FOCUSIN);
 			plus.speech.startRecognize({
 				engine: 'iFly'
 			}, function (s) {

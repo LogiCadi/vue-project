@@ -57,8 +57,8 @@ export default {
       var inputBox = document.querySelector(".input-box");
       inputBox.style.transition = "all 0.5s ease";
       document.querySelector("#inp").addEventListener("focus", () => {
-        inputBox.style.bottom = "235px";
-        chartroom.style.bottom = "185px";
+        inputBox.style.bottom = "234px";
+        chartroom.style.bottom = "184px";
       });
 
       document.querySelector("#inp").addEventListener("blur", e => {
