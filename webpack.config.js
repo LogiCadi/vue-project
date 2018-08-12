@@ -1,6 +1,8 @@
-const htmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-const VueLoaderPlugin = require('./node_modules/vue-loader/lib/plugin')
+
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const uglifyPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
     entry: {
@@ -33,7 +35,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             limit: 4096,
-                            name: '[name].[ext]'
+                            name: 'images/[name].[ext]'
                         }
                     },
                     //图片压缩,
@@ -67,10 +69,12 @@ module.exports = {
         new htmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',
-            inject: 'body',
-            title: 'lk-webpack-demo',
+            inject: 'body'
         }),
-        new VueLoaderPlugin()
+        // 
+        new VueLoaderPlugin(),
+        // js代码压缩
+        new uglifyPlugin()
     ],
     resolve: {
         alias: {

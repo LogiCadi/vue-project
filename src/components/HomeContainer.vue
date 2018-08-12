@@ -61,15 +61,6 @@ export default {
         },
         {
           img: require("../image/milkyway3.jpg")
-        },
-        {
-          img: require("../image/milkyway4.jpg")
-        },
-        {
-          img: require("../image/milkyway5.jpg")
-        },
-        {
-          img: require("../image/milkyway6.jpg")
         }
       ],
       // 内容区域高度
