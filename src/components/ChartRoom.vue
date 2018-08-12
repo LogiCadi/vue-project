@@ -48,11 +48,15 @@ export default {
     clearInterval(this.timeId);
   },
   mounted() {
-    this.inputScroll();
+    if (
+      window.navigator.userAgent.indexOf("Android") != -1 ||
+      window.navigator.userAgent.indexOf("iPhone") != -1
+    ) {
+      this.inputScroll();
+    }
   },
   methods: {
     inputScroll() {
-
       var chartroom = document.querySelector(".chartroom-content");
       var inputBox = document.querySelector(".input-box");
       inputBox.style.transition = "all 0.5s ease";
