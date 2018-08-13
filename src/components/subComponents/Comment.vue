@@ -6,7 +6,7 @@
     <button type="button" class="mui-btn mui-btn-primary mui-btn-block" @tap="newComment">发表</button>
 
     <ul class="mui-table-view">
-      <li class="mui-table-view-cell" v-for="(item,i) in list" :key="item.add_time">
+      <li class="mui-table-view-cell" v-for="(item,i) in list" :key="i">
         <div class="comment-info">第{{ i+1 }}楼&nbsp;&nbsp;用户：{{ item.user_name }}&nbsp;&nbsp;发表时间：{{ item.add_time | dateFormat }}</div>
         <div class="comment-content">{{ item.content }}</div>
       </li>
@@ -27,13 +27,16 @@ export default {
   methods: {
     // 发表评论
     newComment() {
-      this.$http
-        .post("postcomment/" + this.id, { content: this.content })
+      this.axios
+        .post(
+          "postcomment/" + this.id,
+          this.qs.stringify({ content: this.content })
+        )
         .then(res => {
-          if (res.body.status !== 0) {
+          if (res.data.status !== 0) {
             this.mui.toast("请求失败");
           } else {
-            this.mui.toast(res.body.message);
+            this.mui.toast(res.data.message);
             // 添加评论到list数组头部
             this.list.unshift({
               user_name: "匿名用户",

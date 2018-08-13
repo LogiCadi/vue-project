@@ -85,12 +85,12 @@ export default {
       }, 1500);
     },
     getInfo() {
-      this.$http.get("getnew/" + this.id).then(res => {
-        if (res.body.status !== 0) {
+      this.axios.get("getnew/" + this.id).then(res => {
+        if (res.data.status !== 0) {
           this.mui.toast("获取数据失败");
-          console.error(res.body.message);
+          console.error(res.data.message);
         } else {
-          this.newsInfo = res.body.message[0];
+          this.newsInfo = res.data.message[0];
         }
       });
     }

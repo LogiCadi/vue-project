@@ -98,14 +98,15 @@ export default {
     },
     // 获取聊天数据
     getCharts() {
-      this.$http.get(url + "getCharts").then(res => {
-        if (res.body.status !== 0) {
+      this.axios.get(url + "getCharts").then(res => {
+        console.log(res);
+        if (res.data.status !== 0) {
           this.mui.toast("请求失败");
-          console.error(res.body.message);
+          console.error(res.data.message);
         } else {
-          if (this.list.length != res.body.message.length) {
+          if (this.list.length != res.data.message.length) {
             // 有新数据
-            res.body.message.forEach(item => {
+            res.data.message.forEach(item => {
               // 获得name第一个个字符
               item.fname = item.name.slice(0, 1);
 
@@ -117,7 +118,7 @@ export default {
               }
             });
 
-            this.list = res.body.message;
+            this.list = res.data.message;
 
             this.$nextTick(() => {
               window.scrollTo(0, document.documentElement.scrollHeight);

@@ -41,6 +41,14 @@ import mintui from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(mintui)
 
+// 导入Axios
+import axios from 'axios'
+import qs from 'qs'
+Vue.prototype.axios = axios
+Vue.prototype.qs = qs
+// 默认请求地址
+axios.defaults.baseURL = 'http://47.89.21.179:8080/api';
+
 // 全局过滤器
 /**
  * 日期格式化
@@ -113,6 +121,8 @@ const store = new Vuex.Store({
         }
     }
 })
+
+
 // vue实例
 const vm = new Vue({
     el: '#app',
